@@ -4,3 +4,8 @@ a {
 main {
     margin-top: 5rem;
 }
+
+/* There definitely is a more elegant way */
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+    border-color: white !important;
+}

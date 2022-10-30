@@ -1,7 +1,9 @@
+import UserList from "components/UserList";
+
 const SysAdmin = () => {
     return ( 
         <>
-        Welcome system admin!
+            <UserList />
         </>
      );
 }
