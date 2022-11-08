@@ -11,6 +11,7 @@ const NewManagerForm = ({ submit }) => {
             <Grid container spacing={1}>
                 <Grid item xs={12} sm={6}>
                     <TextField
+                        autoComplete='off'
                         fullWidth
                         required
                         margin="normal"
@@ -25,7 +26,7 @@ const NewManagerForm = ({ submit }) => {
                         inputProps={{
                             style: {
                                 borderColor: 'white',
-                                color: 'white'
+                                color: 'white',
                             }
                         }}
                         FormHelperTextProps={{
@@ -116,6 +117,7 @@ const NewManagerForm = ({ submit }) => {
                             }
                         }}
                     >
+                        <MenuItem value="None" selected>-- Add later --</MenuItem>
                         <MenuItem value="Object 1" selected>Draculas bank</MenuItem>
                         <MenuItem value="Object 2">Madeleine Albrights bank</MenuItem>
                     </Select>
@@ -225,14 +227,6 @@ const NewManagerForm = ({ submit }) => {
                         inputLabelProps={{
                             style: {
                                 color: 'white'
-                            }
-                        }}
-                        FormHelperTextProps={{
-                            style: {
-                                backgroundColor: 'white',
-                                borderRadius: '10px',
-                                textAlign: 'center',
-                                marginTop: '10px',
                             }
                         }}
                     >

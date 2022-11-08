@@ -8,7 +8,7 @@ const FormBackground = styled(Card)(({ theme }) => ({
     backgroundColor: theme.palette.primary.main,
     padding: '1.5rem',
     raised: true,
-    width: '80%',
+    width: '70%',
     margin: '1rem auto',
     color: theme.palette.secondary.main
 }))
