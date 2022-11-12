@@ -1,9 +1,7 @@
+import RegisterUser from "components/NoRegistration/RegisterUser";
+
 const NoRegistration = () => {
-    return ( 
-        <>
-            Not registered
-        </>
-     );
-}
- 
+  return <RegisterUser />;
+};
+
 export default NoRegistration;
