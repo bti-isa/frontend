@@ -169,10 +169,14 @@ const styles = {
   },
 };
 
-const UserList = () => {
+const UserList = ({ users }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const theme = useTheme();
+
+  const test = () => {
+    console.log(users)
+  }
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -193,31 +197,32 @@ const UserList = () => {
             justifyContent: 'space-between'
           }}
         >
-          <Box sx={{display: 'flex'}}>
+          <Box sx={{ display: 'flex' }}>
             <PersonIcon color="secondary" fontSize="large" />
             <Typography variant="h4" color="secondary">
               Users
             </Typography>
           </Box>
-          <Box sx={{display: 'flex', padding: '1rem'}}>
+          <Box sx={{ display: 'flex', padding: '1rem' }}>
             <TextField variant="outlined" color="secondary" label="Search" margin="none"
-                InputLabelProps={{
-                    style : {
-                        color: 'white'
-                    }}
+              InputLabelProps={{
+                style: {
+                  color: 'white'
                 }
-                inputProps = {{
-                    style: {
-                        borderColor: 'white',
-                        color: 'white'
-                    }
-                }}
-                />
-            <Button variant="contained" color="secondary" sx={{marginLeft: '1rem'}}>
+              }
+              }
+              inputProps={{
+                style: {
+                  borderColor: 'white',
+                  color: 'white'
+                }
+              }}
+            />
+            <Button variant="contained" color="secondary" sx={{ marginLeft: '1rem' }} onClick={test}>
               <SearchIcon />
             </Button>
           </Box>
-          
+
         </Toolbar>
         <Table>
           <TableHead>
@@ -242,16 +247,16 @@ const UserList = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {dummyData
+            {users
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
                     <TableCell align="left" style={{ minWidth: "auto" }}>
-                      {row.name}
+                      {row.firstname}
                     </TableCell>
                     <TableCell align="right" style={{ minWidth: "auto" }}>
-                      {row.surname}
+                      {row.lastname}
                     </TableCell>
                     <TableCell align="right" style={{ minWidth: "auto" }}>
                       {row.email}
@@ -269,7 +274,7 @@ const UserList = () => {
         sx={{ width: "80%", margin: "0 auto" }}
         rowsPerPageOptions={[10, 30, 100]}
         component="div"
-        count={dummyData.length}
+        count={users.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
