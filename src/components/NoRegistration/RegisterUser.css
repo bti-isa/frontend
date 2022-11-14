@@ -7,8 +7,8 @@ h1 {
 .card {
   border: 2px solid #b30c2e;
   border-radius: 10px;
-  margin-left: 10rem;
-  margin-right: 10rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
   padding-bottom: 2rem;
   background-color: #fefefe;
 }
@@ -53,6 +53,7 @@ select {
 
 .row-elem__wrap {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .submit button {
@@ -69,4 +70,34 @@ select {
   background-color: #fefefe;
   color: #b30c2e;
   border: 1px solid #b30c2e;
+}
+
+@media only screen and (max-width: 850px) {
+  .row {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  .row-elem__wrap {
+    display: flex;
+    justify-content: center;
+  }
+  .row-elem {
+    display: flex;
+    justify-content: center;
+  }
+  .row-elem input {
+    width: 10rem;
+  }
+  .row-elem__street input {
+    width: 6rem;
+  }
+
+  .row-elem__number input {
+    width: 4rem;
+  }
+
+  select {
+    width: 10.4rem;
+  }
 }
