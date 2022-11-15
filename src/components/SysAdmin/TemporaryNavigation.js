@@ -12,15 +12,9 @@ const TemporaryNavigation = () => {
                     </Button>
                 </Link>
                 <Divider orientation="vertical" flexItem />
-                <Link to={ROUTES.SYSADMIN_NEW_CENTER}>
-                    <Button variant="text" color="primary">
-                        Add new center
-                    </Button>
-                </Link>
-                <Divider orientation="vertical" flexItem />
                 <Link to={ROUTES.SYSADMIN_NEW_MANAGER}>
                     <Button variant="text" color="primary">
-                        Add new manager
+                        Add new manager/center
                     </Button>
                 </Link>
             </Toolbar>
