@@ -4,7 +4,7 @@ import useFetchData from "customHooks/fetchData";
 import Loading from "components/Loading";
 
 const Users = () => {
-  const { data, loading } = useFetchData(`User/all`)  //custom hook for fetching any data, just add the part after api/ as param
+  const { data, loading } = useFetchData(`Patient/all`)  //custom hook for fetching any data, just add the part after api/ as param
   return (
     <>
       <TemporaryNavigation />

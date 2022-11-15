@@ -155,8 +155,6 @@ const NewManager = () => {
                     validate={validate}
                     render={({ handleSubmit, values }) => (
                         <form onSubmit={handleSubmit} noValidate>
-                            {/* part of mui rff that shows the form data as JSON */}
-                            <Debug />
                             <NewManagerForm />
                             {showCreateCenterForm && (<AddCenterForm />)}
                             <Container sx={{ display: 'grid', placeItems: 'center' }}>
