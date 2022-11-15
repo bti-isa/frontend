@@ -1,14 +1,17 @@
-import { Grid, MenuItem, Typography, Button } from '@mui/material';
-import { TextField, Debug, Select } from 'mui-rff';
+import { Grid, MenuItem, Typography, Divider } from '@mui/material';
+import { TextField, Select } from 'mui-rff';
 
-const NewManagerForm = ({ submit }) => {
+const NewManagerForm = () => {
     return (
         <>
             <Typography variant="h4" color="secondary">
                 Manager Registration
             </Typography>
-            <Debug />
             <Grid container spacing={1}>
+                <Typography variant="subtitle1" color="secondary" sx={{ marginTop: '3rem' }}>
+                    Personal information:
+                </Typography>
+                <Divider variant='fullWidth' sx={{ borderColor: 'white', width: '100%' }} />
                 <Grid item xs={12} sm={6}>
                     <TextField
                         autoComplete='off'
@@ -117,7 +120,7 @@ const NewManagerForm = ({ submit }) => {
                             }
                         }}
                     >
-                        <MenuItem value="None" selected>-- Add later --</MenuItem>
+                        <MenuItem value="New" selected>-- New Center --</MenuItem>
                         <MenuItem value="Object 1" selected>Draculas bank</MenuItem>
                         <MenuItem value="Object 2">Madeleine Albrights bank</MenuItem>
                     </Select>
@@ -182,7 +185,7 @@ const NewManagerForm = ({ submit }) => {
                         }}
                     />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={4}>
                     <TextField
                         fullWidth
                         required
@@ -211,7 +214,36 @@ const NewManagerForm = ({ submit }) => {
                         }}
                     />
                 </Grid>
-                <Grid item xs={12} sm={6} sx={{ marginTop: '1rem' }}>
+                <Grid item xs={12} sm={6}>
+                    <TextField
+                        fullWidth
+                        required
+                        margin="normal"
+                        name="phoneNumber"
+                        label="Telephone number"
+                        InputLabelProps={{
+                            style: {
+                                color: 'white'
+                            }
+                        }
+                        }
+                        inputProps={{
+                            style: {
+                                borderColor: 'white',
+                                color: 'white'
+                            }
+                        }}
+                        FormHelperTextProps={{
+                            style: {
+                                backgroundColor: 'white',
+                                borderRadius: '10px',
+                                textAlign: 'center',
+                                marginTop: '10px',
+                            }
+                        }}
+                    />
+                </Grid>
+                <Grid item xs={12} sm={2} sx={{ marginTop: '1rem' }}>
                     <Select
                         formControlProps={{ margin: 'none' }}
                         name='gender'
@@ -230,10 +262,14 @@ const NewManagerForm = ({ submit }) => {
                             }
                         }}
                     >
-                        <MenuItem value="Male">Male</MenuItem>
-                        <MenuItem value="Female">Female</MenuItem>
+                        <MenuItem value="MALE">Male</MenuItem>
+                        <MenuItem value="FEMALE">Female</MenuItem>
                     </Select>
                 </Grid>
+                <Typography variant="subtitle1" color="secondary" sx={{ marginTop: '3rem' }}>
+                    Location information:
+                </Typography>
+                <Divider variant='fullWidth' sx={{ borderColor: 'white', width: '100%' }} />
                 <Grid item xs={12} sm={8}>
                     <TextField
                         fullWidth
@@ -350,7 +386,7 @@ const NewManagerForm = ({ submit }) => {
                         }}
                     />
                 </Grid>
-                <Grid item xs={12} sm={12}>
+                <Grid item xs={12} sm={8}>
                     <TextField
                         fullWidth
                         required
@@ -379,10 +415,63 @@ const NewManagerForm = ({ submit }) => {
                         }}
                     />
                 </Grid>
-                <Grid item xs={12} sx={{ display: 'grid', placeItems: 'center' }}>
-                    <Button variant="outlined" color="secondary" onClick={submit}>
-                        Submit
-                    </Button>
+                <Grid item xs={12} sm={2}>
+                    <TextField
+                        fullWidth
+                        required
+                        margin="normal"
+                        name="longitude"
+                        label="Longitude"
+                        InputLabelProps={{
+                            style: {
+                                color: 'white'
+                            }
+                        }
+                        }
+                        inputProps={{
+                            style: {
+                                borderColor: 'white',
+                                color: 'white'
+                            }
+                        }}
+                        FormHelperTextProps={{
+                            style: {
+                                backgroundColor: 'white',
+                                borderRadius: '10px',
+                                textAlign: 'center',
+                                marginTop: '10px',
+                            }
+                        }}
+                    />
+                </Grid>
+                <Grid item xs={12} sm={2}>
+                    <TextField
+                        fullWidth
+                        required
+                        margin="normal"
+                        name="latitude"
+                        label="Latitude"
+                        InputLabelProps={{
+                            style: {
+                                color: 'white'
+                            }
+                        }
+                        }
+                        inputProps={{
+                            style: {
+                                borderColor: 'white',
+                                color: 'white'
+                            }
+                        }}
+                        FormHelperTextProps={{
+                            style: {
+                                backgroundColor: 'white',
+                                borderRadius: '10px',
+                                textAlign: 'center',
+                                marginTop: '10px',
+                            }
+                        }}
+                    />
                 </Grid>
             </Grid>
         </>

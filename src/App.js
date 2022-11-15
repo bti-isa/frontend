@@ -7,7 +7,6 @@ import Users from "pages/sysadmin/Users";
 import User from "pages/User";
 import { ThemeProvider } from "@mui/material";
 import theme from "theme";
-import NewCenter from "pages/sysadmin/NewCenter";
 import NewManager from "pages/sysadmin/NewManager";
 
 function App() {
@@ -21,7 +20,6 @@ function App() {
             <Route path="/admin" element={<Admin />} />
             <Route path="/sysadmin/users" element={<Users />} />
             <Route path="/sysadmin/new/manager" element={<NewManager />} />
-            <Route path="/sysadmin/new/center" element={<NewCenter />} />
             <Route path="/user" element={<User />} />
           </Routes>
         </Layout>
