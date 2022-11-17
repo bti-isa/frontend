@@ -47,22 +47,22 @@ const RegisterUser = () => {
       firstname,
       lastname,
       email,
-      phoneNumber,
       password,
+      phoneNumber,
+      occupation,
+      education,
       jmbg,
       gender,
+      role: "PATIENT",
       address: {
-        street,
-        number,
         city,
+        street,
         country,
+        number,
         postalCode,
         longitude: 0,
         latitude: 0,
       },
-      occupation,
-      education,
-      role: "PATIENT",
     };
 
     console.log(newUserDto);
