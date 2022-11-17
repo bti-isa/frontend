@@ -1,12 +1,21 @@
-import { Grid, MenuItem, Typography, Divider } from '@mui/material';
+import { Grid, MenuItem, Typography, Divider, Button } from '@mui/material';
+import useFetchData from 'customHooks/fetchData';
 import { TextField, Select } from 'mui-rff';
 
 const NewManagerForm = () => {
+    const { data, loading } = useFetchData('BloodBank/simple')
+    const handle = () => {
+        console.log(data)
+    }
+
+    const data1 = [1, 2, 3]
+
     return (
         <>
-            <Typography variant="h4" color="secondary">
+            <Typography variant="h4" color="secondary" onClick={handle}>
                 Manager Registration
             </Typography>
+
             <Grid container spacing={1}>
                 <Typography variant="subtitle1" color="secondary" sx={{ marginTop: '3rem' }}>
                     Personal information:
@@ -121,8 +130,9 @@ const NewManagerForm = () => {
                         }}
                     >
                         <MenuItem value="New" selected>-- New Center --</MenuItem>
-                        <MenuItem value="Object 1" selected>Draculas bank</MenuItem>
-                        <MenuItem value="Object 2">Madeleine Albrights bank</MenuItem>
+                        {!loading && data.map((bank) => (
+                            <MenuItem key={bank.id} value={bank.id}>{bank.name}</MenuItem>
+                        ))}
                     </Select>
                 </Grid>
                 <Grid item xs={12} sm={6}>

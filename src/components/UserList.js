@@ -1,19 +1,4 @@
-import {
-  Container,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TablePagination,
-  TableRow,
-  Toolbar,
-  useTheme,
-  Typography,
-  Box,
-  TextField, Button,
-} from "@mui/material";
+import { Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Toolbar, useTheme, Typography, Box, TextField, Button, } from "@mui/material";
 import { useState } from "react";
 import PersonIcon from "@mui/icons-material/Person";
 import SearchIcon from '@mui/icons-material/Search';
@@ -29,6 +14,7 @@ const styles = {
 const UserList = ({ users }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [searchParameters, setSearchParameters] = useState("")
   const theme = useTheme();
 
   const test = () => {
@@ -43,6 +29,8 @@ const UserList = ({ users }) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
+  console.log(searchParameters)
 
   return (
     <Container sx={{ display: "block" }}>
@@ -62,6 +50,7 @@ const UserList = ({ users }) => {
           </Box>
           <Box sx={{ display: 'flex', padding: '1rem' }}>
             <TextField variant="outlined" color="secondary" label="Search" margin="none"
+              onChange={(event) => setSearchParameters(event.target.value)}
               InputLabelProps={{
                 style: {
                   color: 'white'
@@ -104,6 +93,10 @@ const UserList = ({ users }) => {
           </TableHead>
           <TableBody>
             {users
+              .filter(user =>
+              (user.firstname.toLowerCase().includes(searchParameters)
+                || user.lastname.toLowerCase().includes(searchParameters)
+              ))
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
