@@ -1,5 +1,5 @@
 import "./RegisterUser.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -27,9 +27,7 @@ const RegisterUser = () => {
 
   const navigate = useNavigate();
 
-  const registerNewUser = (e) => {
-    e.preventDefault();
-
+  const check = () => {
     const checkUniqueDto = {
       email,
       phoneNumber,
@@ -42,6 +40,10 @@ const RegisterUser = () => {
         setErrJmbg(res.data[1]);
         setErrPhone(res.data[2]);
       });
+  };
+
+  const registerNewUser = (e) => {
+    e.preventDefault();
 
     const newUserDto = {
       firstname,
@@ -123,18 +125,22 @@ const RegisterUser = () => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                onBlur={check}
               />
               {errEmail && <p className="red">Email already exists.</p>}
             </div>
           </div>
           <div className="row-elem">
             <div>
-              <label className="label">Phone number:</label>
+              <label className="label">
+                Phone number:<span className="span">(least 9 characters)</span>
+              </label>
               <input
                 type="text"
                 required
                 value={phoneNumber}
                 onChange={(e) => setPhone(e.target.value)}
+                onBlur={check}
               />
               {errPhone && <p className="red">Phone number already exists.</p>}
             </div>
@@ -143,7 +149,9 @@ const RegisterUser = () => {
         <div className="row">
           <div className="row-elem">
             <div>
-              <label className="label">Password:</label>
+              <label className="label">
+                Password:<span className="span">(least 8 characters)</span>
+              </label>
               <input
                 type="password"
                 required
@@ -170,12 +178,15 @@ const RegisterUser = () => {
         <div className="row">
           <div className="row-elem">
             <div>
-              <label className="label">JMBG:</label>
+              <label className="label">
+                JMBG:<span className="span">(least 13 characters)</span>
+              </label>
               <input
                 type="text"
                 required
                 value={jmbg}
                 onChange={(e) => setJmbg(e.target.value)}
+                onBlur={check}
               />
               {errJmbg && <p className="red">Jmbg already exists.</p>}
             </div>
