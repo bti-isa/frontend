@@ -1,11 +1,12 @@
 import { Button } from "@mui/material";
 import { Container } from "@mui/system";
+import axios from "axios";
 import AddCenterForm from "components/SysAdmin/AddCenterForm";
 import FormBackground from "components/SysAdmin/FormBackground";
 import NewManagerForm from "components/SysAdmin/NewManagerForm";
 import TemporaryNavigation from "components/SysAdmin/TemporaryNavigation";
+import CONSTANTS from "constants/constants";
 import REGEX from "constants/regex";
-import { Debug } from "mui-rff";
 import { useState } from "react";
 import { Form } from 'react-final-form';
 
@@ -14,8 +15,6 @@ const numberRegex = new RegExp(REGEX.NUMBER)
 
 const NewManager = () => {
     const [showCreateCenterForm, setShowCreateCenterForm] = useState(false)
-
-    //validation
     const validate = (values) => {
         let returnObject = {}
         if (!values.firstName) {
@@ -76,78 +75,107 @@ const NewManager = () => {
             setShowCreateCenterForm(true)
         } else { setShowCreateCenterForm(false) }
 
-        if (!values.centerStreet) {
+        if (values.object === 'New' && !values.centerStreet) {
             returnObject.centerStreet = 'This field is required'
         }
-        if (!numberRegex.test(values.centerBuildingNumber)) {
+        if (values.object === 'New' && !numberRegex.test(values.centerBuildingNumber)) {
             returnObject.centerBuildingNumber = 'Numerical characters only!'
         }
-        if (!values.centerCity) {
+        if (values.object === 'New' && !values.centerCity) {
             returnObject.centerCity = 'This field is required'
         }
-        if (!numberRegex.test(values.centerPostalNumber)) {
+        if (values.object === 'New' && !numberRegex.test(values.centerPostalNumber)) {
             returnObject.centerPostalNumber = 'Numerical characters only!'
         }
-        if (!values.centerCountry) {
+        if (values.object === 'New' && !values.centerCountry) {
             returnObject.centerCountry = 'This field is required'
         }
-        if (!numberRegex.test(values.centerLatitude)) {
+        if (values.object === 'New' && !numberRegex.test(values.centerLatitude)) {
             returnObject.centerLatitude = 'Numerical characters only!'
         }
-        if (!numberRegex.test(values.centerLongitude)) {
+        if (values.object === 'New' && !numberRegex.test(values.centerLongitude)) {
             returnObject.centerLongitude = 'Numerical characters only!'
         }
-        if (!values.centerName) {
+        if (values.object === 'New' && !values.centerName) {
             returnObject.centerName = 'This field is required'
         }
-        if (!values.centerDescription) {
+        if (values.object === 'New' && !values.centerDescription) {
             returnObject.centerDescription = 'This field is required'
         }
         return returnObject
     }
-
-    //transforms data into the DTO we need on BE
-    const onSubmit = (values) => {
-        const NewManagerDTO = {
-            firstname: values.firstName,
-            lastname: values.lastName,
-            email: values.email,
-            password: values.password,
-            phoneNumber: values.phoneNumber,
-            jmbg: values.jmbg,
-            gender: values.gender,
-            role: "MANAGER",
-            address: {
-                city: values.city,
-                street: values.street,
-                country: values.country,
-                postalCode: values.postalCode,
-                number: values.buildingNumber,
-                longitude: values.longitude,
-                latitude: values.latitude
-            }
-        }
-        const NewCenterDTO = {
+    const onSubmit = async (values) => {
+        let NewCenterDTO = {
             name: values.centerName,
             description: values.centerDescription,
             address: {
                 city: values.centerCity,
                 street: values.centerStreet,
                 country: values.centerCountry,
-                postalCode: values.centerPostalCode,
+                postalCode: values.centerPostalNumber,
                 number: values.centerBuildingNumber,
                 longitude: values.centerLongitude,
                 latitude: values.centerLatitude
             }
         }
-        console.log("Manager information:")
-        console.log(NewManagerDTO)
-        console.log("Center information:")
-        console.log(NewCenterDTO)
+        if (showCreateCenterForm) {
+            await axios.post(`${CONSTANTS.API}BloodBank/add`, NewCenterDTO)
+                .catch((error) => console.log(error))
+                .then((response) => {
+                    let NewManagerDTO = {
+                        firstname: values.firstName,
+                        lastname: values.lastName,
+                        email: values.email,
+                        password: values.password,
+                        phoneNumber: values.phoneNumber,
+                        jmbg: values.jmbg,
+                        gender: values.gender,
+                        role: "INSTITUTE_ADMIN",
+                        bloodBankId: response.data.id,
+                        address: {
+                            city: values.city,
+                            street: values.street,
+                            country: values.country,
+                            postalCode: values.postalNumber,
+                            number: values.buildingNumber,
+                            longitude: values.longitude,
+                            latitude: values.latitude
+                        }
+                    }
+                    axios.post(`${CONSTANTS.API}Admin/add`, NewManagerDTO)
+                        .then((response) => console.log(response))
+                })
+        } else {
+            let NewManagerDTO = {
+                firstname: values.firstName,
+                lastname: values.lastName,
+                email: values.email,
+                password: values.password,
+                phoneNumber: values.phoneNumber,
+                jmbg: values.jmbg,
+                gender: values.gender,
+                role: "INSTITUTE_ADMIN",
+                bloodBankId: values.object,
+                address: {
+                    city: values.city,
+                    street: values.street,
+                    country: values.country,
+                    postalCode: values.postalNumber,
+                    number: values.buildingNumber,
+                    longitude: values.longitude,
+                    latitude: values.latitude
+                }
+            }
+            axios.post(`${CONSTANTS.API}Admin/add`, NewManagerDTO)
+                .then((response) => console.log(response))
+        }
     }
 
     return (
         <>
+            <Button variant="text" color="primary">
+                work
+            </Button>
             <TemporaryNavigation />
             <FormBackground raised>
                 <Form
