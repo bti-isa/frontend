@@ -1,4 +1,4 @@
-h1 {
+.title {
   color: #b30c2e;
   text-align: center;
   padding-bottom: 1rem;
@@ -18,7 +18,7 @@ h1 {
   padding-bottom: 1.5rem;
 }
 
-.row-elem label {
+.row-elem .label {
   display: block;
   color: #b30c2e;
   font-size: 1.2rem;
@@ -31,7 +31,7 @@ h1 {
   width: 15rem;
 }
 
-select {
+.select {
   border: 1px solid #b30c2e;
   border-radius: 5px;
   height: 2.3rem;
@@ -100,7 +100,7 @@ select {
     width: 4rem;
   }
 
-  select {
+  .select {
     width: 10.4rem;
   }
 }

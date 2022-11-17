@@ -88,12 +88,12 @@ const RegisterUser = () => {
 
   return (
     <div className="card">
-      <h1>Register</h1>
+      <h1 className="title">Register</h1>
       <form>
         <div className="row">
           <div className="row-elem">
             <div>
-              <label>First Name:</label>
+              <label className="label">First Name:</label>
               <input
                 type="text"
                 required
@@ -104,7 +104,7 @@ const RegisterUser = () => {
           </div>
           <div className="row-elem">
             <div>
-              <label>Last Name:</label>
+              <label className="label">Last Name:</label>
               <input
                 type="text"
                 required
@@ -117,7 +117,7 @@ const RegisterUser = () => {
         <div className="row">
           <div className="row-elem">
             <div>
-              <label>Email:</label>
+              <label className="label">Email:</label>
               <input
                 type="email"
                 required
@@ -129,7 +129,7 @@ const RegisterUser = () => {
           </div>
           <div className="row-elem">
             <div>
-              <label>Phone number:</label>
+              <label className="label">Phone number:</label>
               <input
                 type="text"
                 required
@@ -143,7 +143,7 @@ const RegisterUser = () => {
         <div className="row">
           <div className="row-elem">
             <div>
-              <label>Password:</label>
+              <label className="label">Password:</label>
               <input
                 type="password"
                 required
@@ -154,7 +154,7 @@ const RegisterUser = () => {
           </div>
           <div className="row-elem">
             <div>
-              <label>Repeat password:</label>
+              <label className="label">Repeat password:</label>
               <input
                 type="password"
                 value={repeatPassword}
@@ -170,7 +170,7 @@ const RegisterUser = () => {
         <div className="row">
           <div className="row-elem">
             <div>
-              <label>JMBG:</label>
+              <label className="label">JMBG:</label>
               <input
                 type="text"
                 required
@@ -182,8 +182,11 @@ const RegisterUser = () => {
           </div>
           <div className="row-elem">
             <div>
-              <label>Gender:</label>
-              <select onChange={(e) => setGender(e.target.value)}>
+              <label className="label">Gender:</label>
+              <select
+                onChange={(e) => setGender(e.target.value)}
+                className="select"
+              >
                 <option selected disabled value=" ">
                   &#160;
                 </option>
@@ -197,7 +200,7 @@ const RegisterUser = () => {
           <div className="row-elem">
             <div className="row-elem__wrap">
               <div className="row-elem__street">
-                <label>Street:</label>
+                <label className="label">Street:</label>
                 <input
                   type="text"
                   required
@@ -206,7 +209,7 @@ const RegisterUser = () => {
                 />
               </div>
               <div className="row-elem__number">
-                <label>Number:</label>
+                <label className="label">Number:</label>
                 <input
                   type="text"
                   required
@@ -218,7 +221,7 @@ const RegisterUser = () => {
           </div>
           <div className="row-elem">
             <div>
-              <label>City:</label>
+              <label className="label">City:</label>
               <input
                 type="text"
                 required
@@ -231,7 +234,7 @@ const RegisterUser = () => {
         <div className="row">
           <div className="row-elem">
             <div>
-              <label>Country:</label>
+              <label className="label">Country:</label>
               <input
                 type="text"
                 required
@@ -242,7 +245,7 @@ const RegisterUser = () => {
           </div>
           <div className="row-elem">
             <div>
-              <label>Postal number:</label>
+              <label className="label">Postal number:</label>
               <input
                 type="text"
                 required
@@ -255,7 +258,7 @@ const RegisterUser = () => {
         <div className="row">
           <div className="row-elem">
             <div>
-              <label>Occupation:</label>
+              <label className="label">Occupation:</label>
               <input
                 type="text"
                 required
@@ -266,7 +269,7 @@ const RegisterUser = () => {
           </div>
           <div className="row-elem">
             <div>
-              <label>Education:</label>
+              <label className="label">Education:</label>
               <input
                 type="text"
                 required

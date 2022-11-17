@@ -3,28 +3,34 @@
   justify-content: center;
 }
 
-table {
+.table {
   border-collapse: collapse;
 }
-th {
+.th {
   padding: 1rem;
   background-color: #b30c2e;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   color: white;
 }
-td {
+.td {
   text-align: center;
   padding: 0.5rem;
 }
-tr {
+.tr {
   border: 1px solid gray;
 }
 
-tr:nth-child(even) {
+.tr:nth-child(even) {
   background-color: #f2f2f2;
 }
-tr:hover {
+.tr:hover {
   background-color: #b30c2e;
   color: white;
+}
+
+.title {
+  color: #b30c2e;
+  text-align: center;
+  padding-bottom: 1rem;
 }

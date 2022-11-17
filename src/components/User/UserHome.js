@@ -40,34 +40,47 @@ const UserHome = (props) => {
   };
   return (
     <div>
-      <h1>Blood banks</h1>
+      <h1 className="title">Blood banks</h1>
       <div className="container">
-        <table>
+        <table className="table">
           <thead>
-            <tr>
-              <th onClick={() => sorting("name")}>Name</th>
-              <th onClick={() => sortingSpecial("address", "street")}>
+            <tr className="tr">
+              <th className="th" onClick={() => sorting("name")}>
+                Name
+              </th>
+              <th
+                className="th"
+                onClick={() => sortingSpecial("address", "street")}
+              >
                 Street
               </th>
-              <th onClick={() => sortingSpecial("address", "city")}>City</th>
-              <th onClick={() => sortingSpecial("address", "country")}>
+              <th
+                className="th"
+                onClick={() => sortingSpecial("address", "city")}
+              >
+                City
+              </th>
+              <th
+                className="th"
+                onClick={() => sortingSpecial("address", "country")}
+              >
                 Country
               </th>
-              <th>Rating</th>
-              <th onClick={() => sorting("description")}>Description</th>
+              <th className="th" onClick={() => sorting("description")}>
+                Description
+              </th>
             </tr>
           </thead>
           <tbody>
             {data.map((bloodBank) => (
-              <tr key={bloodBank.id}>
-                <td>{bloodBank.name}</td>
-                <td>
+              <tr className="tr" key={bloodBank.id}>
+                <td className="td">{bloodBank.name}</td>
+                <td className="td">
                   {bloodBank.address.street + " " + bloodBank.address.number}
                 </td>
-                <td>{bloodBank.address.city}</td>
-                <td>{bloodBank.address.country}</td>
-                <td>{bloodBank.rating}</td>
-                <td>{bloodBank.description}</td>
+                <td className="td">{bloodBank.address.city}</td>
+                <td className="td">{bloodBank.address.country}</td>
+                <td className="td">{bloodBank.description}</td>
               </tr>
             ))}
           </tbody>

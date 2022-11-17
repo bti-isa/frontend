@@ -86,11 +86,11 @@ const Poll = () => {
 
   return (
     <div>
-      <h1>Poll</h1>
-      <form>
+      <h1 className="title">Poll</h1>
+      <form className="form">
         <div className="container">
           <div className="elem">
-            <h3>{Questions.at(0).text}</h3>
+            <h3 className="h3">{Questions.at(0).text}</h3>
             <div className="radio">
               <Radio
                 checked={weightOver50kg === "true"}
@@ -112,7 +112,7 @@ const Poll = () => {
           </div>
 
           <div className="elem">
-            <h3>{Questions.at(1).text}</h3>
+            <h3 className="h3">{Questions.at(1).text}</h3>
             <div className="radio">
               <Radio
                 checked={commonCold === "true"}
@@ -134,7 +134,7 @@ const Poll = () => {
           </div>
 
           <div className="elem">
-            <h3>{Questions.at(2).text}</h3>
+            <h3 className="h3">{Questions.at(2).text}</h3>
             <div className="radio">
               <Radio
                 checked={skinDiseases === "true"}
@@ -156,7 +156,7 @@ const Poll = () => {
           </div>
 
           <div className="elem">
-            <h3>{Questions.at(3).text}</h3>
+            <h3 className="h3">{Questions.at(3).text}</h3>
             <div className="radio">
               <Radio
                 checked={problemWithPressure === "true"}
@@ -178,7 +178,7 @@ const Poll = () => {
           </div>
 
           <div className="elem">
-            <h3>{Questions.at(4).text}</h3>
+            <h3 className="h3">{Questions.at(4).text}</h3>
             <div className="radio">
               <Radio
                 checked={antibiotics === "true"}
@@ -200,7 +200,7 @@ const Poll = () => {
           </div>
 
           <div className="elem">
-            <h3>{Questions.at(5).text}</h3>
+            <h3 className="h3"> {Questions.at(5).text}</h3>
             <div className="radio">
               <Radio
                 checked={menstruation === "true"}
@@ -222,7 +222,7 @@ const Poll = () => {
           </div>
 
           <div className="elem">
-            <h3>{Questions.at(6).text}</h3>
+            <h3 className="h3">{Questions.at(6).text}</h3>
             <div className="radio">
               <Radio
                 checked={dentalIntervention === "true"}
@@ -244,7 +244,7 @@ const Poll = () => {
           </div>
 
           <div className="elem">
-            <h3>{Questions.at(7).text}</h3>
+            <h3 className="h3">{Questions.at(7).text}</h3>
             <div className="radio">
               <Radio
                 checked={other === "true"}
