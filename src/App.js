@@ -9,6 +9,7 @@ import Poll from "components/Poll/Poll";
 import { ThemeProvider } from "@mui/material";
 import theme from "theme";
 import NewManager from "pages/sysadmin/NewManager";
+import UpdatePatient from "pages/patient/UpdatePatient";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/sysadmin/users" element={<Users />} />
             <Route path="/sysadmin/new/manager" element={<NewManager />} />
             <Route path="/user" element={<User />} />
+            <Route path="/update-patient" element={<UpdatePatient />} />
             <Route path="/poll" element={<Poll />} />
           </Routes>
         </Layout>
