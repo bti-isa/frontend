@@ -5,12 +5,12 @@ import NoRegistration from "pages/NoRegistration";
 import Admin from "pages/Admin";
 import Users from "pages/sysadmin/Users";
 import User from "pages/User";
+import Poll from "components/Poll/Poll";
 import { ThemeProvider } from "@mui/material";
 import theme from "theme";
 import NewManager from "pages/sysadmin/NewManager";
 
 function App() {
-
   return (
     <ThemeProvider theme={theme}>
       <Router>
@@ -21,6 +21,7 @@ function App() {
             <Route path="/sysadmin/users" element={<Users />} />
             <Route path="/sysadmin/new/manager" element={<NewManager />} />
             <Route path="/user" element={<User />} />
+            <Route path="/poll" element={<Poll />} />
           </Routes>
         </Layout>
       </Router>
