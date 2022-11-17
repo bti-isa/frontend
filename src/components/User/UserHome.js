@@ -42,7 +42,7 @@ const UserHome = (props) => {
     <div>
       <h1>Blood banks</h1>
       <div className="container">
-        <table border={1}>
+        <table>
           <thead>
             <tr>
               <th onClick={() => sorting("name")}>Name</th>
