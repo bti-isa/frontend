@@ -8,6 +8,9 @@ const User = () => {
     <Link to={"/update-patient"}>
       UpdatePatient
     </Link>
+    <Link to={"/poll"}>
+      Poll
+    </Link>
     {loading ? <Loading /> : <UserHome bloodBanks={data} />}
   </>;
 };
