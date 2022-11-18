@@ -1,4 +1,4 @@
-form {
+.form {
   border: 1px solid black;
   border-radius: 10px;
   margin-right: 5rem;
@@ -6,12 +6,14 @@ form {
   background-color: #f2f2f2;
   padding: 2rem;
 }
+
 .container {
   display: flex;
   /* justify-content: space-evenly;
   flex-wrap: wrap; */
   flex-direction: column;
 }
+
 .elem {
   border: 1px solid gray;
   border-radius: 10px;
@@ -26,11 +28,13 @@ form {
 h3 {
   margin-left: 2rem;
 }
+
 .btn--wrap {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
 }
+
 .err--wrap {
   display: flex;
   justify-content: center;
@@ -45,14 +49,17 @@ h3 {
   text-transform: uppercase;
   letter-spacing: 0.1rem;
 }
+
 .radio {
   margin-right: 2rem;
 }
+
 .btn:hover {
   background-color: white;
   color: #b30c2e;
   border: 1px solid #b30c2e;
 }
+
 .red {
   color: red;
 }

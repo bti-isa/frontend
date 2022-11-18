@@ -87,7 +87,7 @@ const Poll = () => {
   return (
     <div>
       <h1>Poll</h1>
-      <form>
+      <form className="form">
         <div className="container">
           <div className="elem">
             <h3>{Questions.at(0).text}</h3>
