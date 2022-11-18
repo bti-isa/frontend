@@ -67,7 +67,7 @@ const RegisterUser = () => {
       },
     };
 
-    console.log(newUserDto);
+    //console.log(newUserDto);
 
     if (passwordMatch && !errEmail && !errJmbg && !errPhone) {
       fetch("http://localhost:8080/api/Patient/", {
