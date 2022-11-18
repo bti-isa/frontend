@@ -5,10 +5,10 @@
 }
 
 .card {
+  width: 70%;
   border: 2px solid #b30c2e;
   border-radius: 10px;
-  margin-left: 5rem;
-  margin-right: 5rem;
+  margin: 0 auto;
   padding-bottom: 2rem;
   background-color: #fefefe;
 }
@@ -79,23 +79,28 @@
 .span {
   font-size: small;
 }
+
 @media only screen and (max-width: 850px) {
   .row {
     display: flex;
     flex-direction: column;
     text-align: center;
   }
+
   .row-elem__wrap {
     display: flex;
     justify-content: center;
   }
+
   .row-elem {
     display: flex;
     justify-content: center;
   }
+
   .row-elem input {
     width: 10rem;
   }
+
   .row-elem__street input {
     width: 6rem;
   }

@@ -5,15 +5,19 @@ import AddCenterForm from "components/SysAdmin/AddCenterForm";
 import FormBackground from "components/SysAdmin/FormBackground";
 import NewManagerForm from "components/SysAdmin/NewManagerForm";
 import TemporaryNavigation from "components/SysAdmin/TemporaryNavigation";
+import ROUTES from "config/routes";
 import CONSTANTS from "constants/constants";
 import REGEX from "constants/regex";
 import { useState } from "react";
 import { Form } from 'react-final-form';
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const emailRegex = new RegExp(REGEX.EMAIL)
 const numberRegex = new RegExp(REGEX.NUMBER)
 
 const NewManager = () => {
+    const navigate = useNavigate()
     const [showCreateCenterForm, setShowCreateCenterForm] = useState(false)
     const validate = (values) => {
         let returnObject = {}
@@ -120,8 +124,9 @@ const NewManager = () => {
         }
         if (showCreateCenterForm) {
             await axios.post(`${CONSTANTS.API}BloodBank/add`, NewCenterDTO)
-                .catch((error) => console.log(error))
+                .catch((error) => toast('Bank registration unsuccessful 😢💔'))
                 .then((response) => {
+                    if (response === undefined) return null;
                     let NewManagerDTO = {
                         firstname: values.firstName,
                         lastname: values.lastName,
@@ -143,7 +148,14 @@ const NewManager = () => {
                         }
                     }
                     axios.post(`${CONSTANTS.API}Admin/add`, NewManagerDTO)
-                        .then((response) => console.log(response))
+                        .catch((error) => {
+                            toast('Admin registration unsuccessful 😢💔')
+                        })
+                        .then((response) => {
+                            if (response === undefined) return null;
+                            toast('Manager and Blood Bank successfully registered! 😊')
+                            navigate(ROUTES.SYSADMIN_USERS)
+                        })
                 })
         } else {
             let NewManagerDTO = {
@@ -167,15 +179,19 @@ const NewManager = () => {
                 }
             }
             axios.post(`${CONSTANTS.API}Admin/add`, NewManagerDTO)
-                .then((response) => console.log(response))
+                .catch((error) => {
+                    toast('Registration unsuccessful 😢💔')
+                })
+                .then((response) => {
+                    if (response === undefined) return null;
+                    toast('Manager successfully registered! 😊')
+                    navigate(ROUTES.SYSADMIN_USERS)
+                })
         }
     }
 
     return (
         <>
-            <Button variant="text" color="primary">
-                work
-            </Button>
             <TemporaryNavigation />
             <FormBackground raised>
                 <Form
