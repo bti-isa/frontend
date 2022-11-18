@@ -10,7 +10,7 @@ import CONSTANTS from "constants/constants";
 import REGEX from "constants/regex";
 import { useState } from "react";
 import { Form } from 'react-final-form';
-import { Router, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const emailRegex = new RegExp(REGEX.EMAIL)
