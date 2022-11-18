@@ -93,9 +93,9 @@ const UserHome = (props) => {
               </th>
               <th
                 className="th"
-                onClick={() => sortingSpecial("address", "street")}
+                onClick={() => sortingSpecial("address", "country")}
               >
-                Street
+                Country
               </th>
               <th
                 className="th"
@@ -105,9 +105,12 @@ const UserHome = (props) => {
               </th>
               <th
                 className="th"
-                onClick={() => sortingSpecial("address", "country")}
+                onClick={() => sortingSpecial("address", "street")}
               >
-                Country
+                Street
+              </th>
+              <th className="th" onClick={() => sorting("rating")}>
+                Rating
               </th>
               <th className="th" onClick={() => sorting("description")}>
                 Description
@@ -118,11 +121,12 @@ const UserHome = (props) => {
             {data.map((bloodBank) => (
               <tr className="tr" key={bloodBank.id}>
                 <td className="td">{bloodBank.name}</td>
+                <td className="td">{bloodBank.address.country}</td>
+                <td className="td">{bloodBank.address.city}</td>
                 <td className="td">
                   {bloodBank.address.street + " " + bloodBank.address.number}
                 </td>
-                <td className="td">{bloodBank.address.city}</td>
-                <td className="td">{bloodBank.address.country}</td>
+                <td className="td">{bloodBank.rating}</td>
                 <td className="td">{bloodBank.description}</td>
               </tr>
             ))}
