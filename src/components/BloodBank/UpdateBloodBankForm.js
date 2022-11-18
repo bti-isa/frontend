@@ -1,25 +1,25 @@
-import { Grid, MenuItem, Typography, Divider } from '@mui/material';
-import { TextField, Select } from 'mui-rff';
+import { Grid, Typography, Divider } from '@mui/material';
+import { TextField} from 'mui-rff';
 
-const UpdateAdminForm = () =>{
+const UpdateBloodBankForm = () =>{
     return (
         <>
             <Typography variant="h4" color="secondary">
-                Update admin profile
+                Update Blood Bank
             </Typography>
             <Grid container spacing={1}>
                 <Typography variant="subtitle1" color="secondary" sx={{ marginTop: '3rem' }}>
-                    Personal information:
+                    General information:
                 </Typography>
                 <Divider variant='fullWidth' sx={{ borderColor: 'white', width: '100%' }} />
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={8}>
                     <TextField
                         autoComplete='off'
                         fullWidth
                         required
                         margin="normal"
-                        name="firstname"
-                        label="First Name"
+                        name="name"
+                        label="Name"
                         InputLabelProps={{
                             style: {
                                 color: 'white'
@@ -42,42 +42,13 @@ const UpdateAdminForm = () =>{
                         }}
                     />
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                    <TextField
-                        fullWidth
-                        required
-                        margin="normal"
-                        name="lastname"
-                        label="Last Name"
-                        InputLabelProps={{
-                            style: {
-                                color: 'white'
-                            }
-                        }
-                        }
-                        inputProps={{
-                            style: {
-                                borderColor: 'white',
-                                color: 'white'
-                            }
-                        }}
-                        FormHelperTextProps={{
-                            style: {
-                                backgroundColor: 'white',
-                                borderRadius: '10px',
-                                textAlign: 'center',
-                                marginTop: '10px',
-                            }
-                        }}
-                    />
-                </Grid>
                 <Grid item xs={12} sm={4}>
                     <TextField
                         fullWidth
                         required
                         margin="normal"
-                        name="jmbg"
-                        label="Social security number"
+                        name="rating"
+                        label="Rating"
                         InputLabelProps={{
                             style: {
                                 color: 'white'
@@ -99,67 +70,14 @@ const UpdateAdminForm = () =>{
                             }
                         }}
                     />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <TextField
-                        fullWidth
-                        required
-                        margin="normal"
-                        name="phoneNumber"
-                        label="Phone Number"
-                        InputLabelProps={{
-                            style: {
-                                color: 'white'
-                            }
-                        }
-                        }
-                        inputProps={{
-                            style: {
-                                borderColor: 'white',
-                                color: 'white'
-                            }
-                        }}
-                        FormHelperTextProps={{
-                            style: {
-                                backgroundColor: 'white',
-                                borderRadius: '10px',
-                                textAlign: 'center',
-                                marginTop: '10px',
-                            }
-                        }}
-                    />
-                </Grid>
-                <Grid item xs={12} sm={2} sx={{ marginTop: '1rem' }}>
-                    {/* set selected value */}
-                    <Select
-                        formControlProps={{ margin: 'none' }}
-                        name='gender'
-                        label='Gender'
-                        required
-                        fullWidth
-                        SelectDisplayProps={{
-                            style: {
-                                borderColor: 'white',
-                                color: 'white'
-                            }
-                        }}
-                        inputLabelProps={{
-                            style: {
-                                color: 'white'
-                            }
-                        }}
-                    >
-                        <MenuItem value="MALE">Male</MenuItem>
-                        <MenuItem value="FEMALE">Female</MenuItem>
-                    </Select>
                 </Grid>
                 <Grid item xs={12} sm={0}>
                     <TextField
                         fullWidth
                         required
                         margin="normal"
-                        name="email"
-                        label="Email"
+                        name="description"
+                        label="Description"
                         InputLabelProps={{
                             style: {
                                 color: 'white'
@@ -395,4 +313,4 @@ const UpdateAdminForm = () =>{
 }
 
 
-export default UpdateAdminForm;
+export default UpdateBloodBankForm;

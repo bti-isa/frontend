@@ -11,6 +11,7 @@ import theme from "theme";
 import NewManager from "pages/sysadmin/NewManager";
 import UpdatePatient from "pages/patient/UpdatePatient";
 import UpdateAdmin from "components/Admin/UpdateAdmin";
+import UpdateBloodBank from "components/BloodBank/UpdateBloodBank";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/sysadmin/users" element={<Users />} />
             <Route path="/sysadmin/new/manager" element={<NewManager />} />
             <Route path="/user" element={<User />} />
+            <Route path="/update-bloodbank/:bloodBankId" element={<UpdateBloodBank />} />
             <Route path="/update-patient" element={<UpdatePatient />} />
             <Route path="/poll" element={<Poll />} />
           </Routes>

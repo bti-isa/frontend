@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import "./UserHome.css";
 import CONSTANTS from "constants/constants";
+import { Link } from "react-router-dom";
 
 const UserHome = (props) => {
   const [data, setData] = useState(props.bloodBanks);
@@ -115,6 +116,9 @@ const UserHome = (props) => {
               <th className="th" onClick={() => sorting("description")}>
                 Description
               </th>
+              <th className="th">
+                Update
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -128,6 +132,7 @@ const UserHome = (props) => {
                 </td>
                 <td className="td">{bloodBank.rating}</td>
                 <td className="td">{bloodBank.description}</td>
+                <td className="td"><Link to={`/update-bloodbank/${bloodBank.id}`}>Update</Link></td>
               </tr>
             ))}
           </tbody>
