@@ -67,10 +67,9 @@ const RegisterUser = () => {
       },
     };
 
-    console.log(newUserDto);
+    //console.log(newUserDto);
 
     if (passwordMatch && !errEmail && !errJmbg && !errPhone) {
-      console.log("USAO SAM ODJE");
       fetch("http://localhost:8080/api/Patient/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
