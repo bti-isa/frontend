@@ -7,6 +7,7 @@ import REGEX from "constants/regex";
 import axios from "axios";
 import FormBackground from "components/SysAdmin/FormBackground";
 import UpdateAdminForm from "./UpdateAdminForm";
+import { useParams } from "react-router-dom";
 
 const useFetchData = (path) => {
     const [data, setData] = useState({});
@@ -41,7 +42,8 @@ const useFetchData = (path) => {
 
 const UpdateAdmin = () =>{
     const numberRegex = new RegExp(REGEX.NUMBER);
-    const { data, address, location, loading } = useFetchData("Admin/1");
+    const params = useParams()
+    const { data, address, location, loading } = useFetchData("Admin/" + params.adminId);
     console.log(data, address, location, loading)
 
     const validate = (values) => {

@@ -20,7 +20,7 @@ function App() {
           <Routes>
             <Route path="/" element={<NoRegistration />} />
             <Route path="/admin" element={<Admin />} />
-            <Route path="/update-admin" element={<UpdateAdmin/>} />
+            <Route path="/update-admin/:adminId" element={<UpdateAdmin/>} />
             <Route path="/sysadmin/users" element={<Users />} />
             <Route path="/sysadmin/new/manager" element={<NewManager />} />
             <Route path="/user" element={<User />} />
