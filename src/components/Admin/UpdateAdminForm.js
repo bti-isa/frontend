@@ -389,6 +389,70 @@ const UpdateAdminForm = () =>{
                         }}
                     />
                 </Grid>
+                <Typography variant="subtitle1" color="secondary" sx={{ marginTop: '3rem' }}>
+                    Password change:
+                </Typography>
+                <Divider variant='fullWidth' sx={{ borderColor: 'white', width: '100%' }} />
+                <Grid item xs={12} sm={6}>
+                    <TextField
+                        fullWidth
+                        required
+                        margin="normal"
+                        name="password"
+                        label="Password"
+                        type='password'
+                        InputLabelProps={{
+                            style: {
+                                color: 'white'
+                            }
+                        }
+                        }
+                        inputProps={{
+                            style: {
+                                borderColor: 'white',
+                                color: 'white'
+                            }
+                        }}
+                        FormHelperTextProps={{
+                            style: {
+                                backgroundColor: 'white',
+                                borderRadius: '10px',
+                                textAlign: 'center',
+                                marginTop: '10px',
+                            }
+                        }}
+                    />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <TextField
+                        fullWidth
+                        required
+                        margin="normal"
+                        name="confirmPassword"
+                        label="Confirm password"
+                        type='password'
+                        InputLabelProps={{
+                            style: {
+                                color: 'white'
+                            }
+                        }
+                        }
+                        inputProps={{
+                            style: {
+                                borderColor: 'white',
+                                color: 'white'
+                            }
+                        }}
+                        FormHelperTextProps={{
+                            style: {
+                                backgroundColor: 'white',
+                                borderRadius: '10px',
+                                textAlign: 'center',
+                                marginTop: '10px',
+                            }
+                        }}
+                    />
+                </Grid>
             </Grid>
         </>
     );

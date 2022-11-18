@@ -78,6 +78,16 @@ const UpdateAdmin = () =>{
         if (!values.phoneNumber) {
             returnObject.phoneNumber = 'This field is required'
         }
+        if (!values.password || values.password.length < 6) {
+            returnObject.password = 'Password must be at least 6 characters long'
+        }
+        if (!values.confirmPassword || values.password.length < 6) {
+            returnObject.confirmPassword = 'Password must be at least 6 characters long'
+        }
+        if (values.password !== values.confirmPassword) {
+            returnObject.password = 'Passwords must match!'
+            returnObject.confirmPassword = 'Passwords must match!'
+        }
 
         return returnObject
     }
@@ -106,10 +116,17 @@ const UpdateAdmin = () =>{
                 latitude: values.latitude
             }
         }
+
+        const updatePasswordDTO = {
+            email: data.email,
+            password: values.password,
+            confirmPassword: values.confirmPassword
+        }
     
          const update = async () => {
             try {
                 const { } = await axios.put(`${CONSTANTS.API}Admin/update`, updateAdminDTO);
+                const { } = await axios.put(`${CONSTANTS.API}User/password/change`, updatePasswordDTO)
                 alert("Admin successfully updated!")
                 router("/admin")
             } catch (error) {

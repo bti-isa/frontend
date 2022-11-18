@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import './AdminTable.css'
 
 export const AdminTable = (props) =>{
     const [data, setData] = useState(props.admins)
@@ -18,7 +19,7 @@ export const AdminTable = (props) =>{
                 </thead>
                 <tbody>
                     {data.map((admin)=>(
-                        <tr key={admin.id}>
+                        <tr className="tr" key={admin.id}>
                             <td className="td">{admin.firstname}</td>
                             <td className="td">{admin.lastname}</td>
                             <td className="td">{admin.email}</td>
