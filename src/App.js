@@ -10,6 +10,7 @@ import { ThemeProvider } from "@mui/material";
 import theme from "theme";
 import NewManager from "pages/sysadmin/NewManager";
 import UpdatePatient from "pages/patient/UpdatePatient";
+import UpdateAdmin from "components/Admin/UpdateAdmin";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Routes>
             <Route path="/" element={<NoRegistration />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/update-admin" element={<UpdateAdmin/>} />
             <Route path="/sysadmin/users" element={<Users />} />
             <Route path="/sysadmin/new/manager" element={<NewManager />} />
             <Route path="/user" element={<User />} />
