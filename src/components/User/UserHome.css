@@ -54,6 +54,7 @@
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   color: white;
+  cursor: pointer;
 }
 
 td {
@@ -70,7 +71,7 @@ td {
 }
 
 .tr:hover {
-  background-color: #E3735E;
+  background-color: #e3735e;
   color: white;
 }
 
