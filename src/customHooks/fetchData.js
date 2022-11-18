@@ -1,5 +1,6 @@
 import axios from "axios";
 import CONSTANTS from "constants/constants";
+import { configOptions } from "final-form";
 import { useEffect, useState } from "react";
 
 const useFetchData = (path) => {
@@ -19,7 +20,7 @@ const useFetchData = (path) => {
 
         fetchData();
     }, []);
-
+    
     return {
         data,
         loading,

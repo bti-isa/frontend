@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./UserHome.css";
 
 const UserHome = (props) => {
+  console.log(props.bloodBanks)
   const [data, setData] = useState(props.bloodBanks);
   const [order, setOrder] = useState("ASC");
+  
 
   const sorting = (col) => {
     if (order === "ASC") {
@@ -55,6 +58,7 @@ const UserHome = (props) => {
               </th>
               <th>Rating</th>
               <th onClick={() => sorting("description")}>Description</th>
+              <th onClick={() => sorting("description")}>Update</th>
             </tr>
           </thead>
           <tbody>
@@ -68,6 +72,7 @@ const UserHome = (props) => {
                 <td>{bloodBank.address.country}</td>
                 <td>{bloodBank.rating}</td>
                 <td>{bloodBank.description}</td>
+                <td><Link to={`/blood-bank-detail/${bloodBank.id}`}>Details</Link></td>
               </tr>
             ))}
           </tbody>

@@ -1,0 +1,31 @@
+.text-field-control-wrapper .MuiFormControl-root {
+    margin-top: 8px;
+}
+
+.text-field-control-wrapper fieldset {
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid black;
+}
+
+.text-field-control-wrapper label {
+    color: #b30c2e;
+    left: -14px;
+}
+
+.text-field-control-wrapper label.Mui-focused {
+    color: #b30c2e;
+}
+
+.text-field-control-wrapper input {
+    color: black;
+    padding-left: 0;
+}
+
+.text-field-control-wrapper .Mui-focused fieldset {
+    border-color: #b30c2e !important;
+}
+
+.error-message{
+    color: red;
+}

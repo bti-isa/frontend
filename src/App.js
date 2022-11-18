@@ -8,6 +8,8 @@ import User from "pages/User";
 import { ThemeProvider } from "@mui/material";
 import theme from "theme";
 import NewManager from "pages/sysadmin/NewManager";
+import { UpdateAdminForm } from "components/Admin/UpdateAdminForm";
+import UpdateBloodBank from "components/Admin/UpdateBloodBank";
 
 function App() {
 
@@ -18,9 +20,11 @@ function App() {
           <Routes>
             <Route path="/" element={<NoRegistration />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/admin-detail/:adminId" element={<UpdateAdminForm />} />
             <Route path="/sysadmin/users" element={<Users />} />
             <Route path="/sysadmin/new/manager" element={<NewManager />} />
             <Route path="/user" element={<User />} />
+            <Route path="/blood-bank-detail/:bloodBankId" element={<UpdateBloodBank />} />
           </Routes>
         </Layout>
       </Router>
