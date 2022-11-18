@@ -108,8 +108,6 @@ const UpdatePatient = () => {
             }
         }
 
-        console.log(UpdatePatientDTO)
-
         const update = async () => {
             try {
                 const { } = await axios.patch(`${CONSTANTS.API}Patient/`, UpdatePatientDTO);
