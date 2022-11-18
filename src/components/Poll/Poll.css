@@ -25,7 +25,7 @@
   background-color: white;
 }
 
-h3 {
+.h3 {
   margin-left: 2rem;
 }
 
@@ -62,4 +62,10 @@ h3 {
 
 .red {
   color: red;
+}
+
+.title {
+  color: #b30c2e;
+  text-align: center;
+  padding-bottom: 1rem;
 }
