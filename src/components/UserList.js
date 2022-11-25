@@ -13,13 +13,9 @@ const styles = {
 
 const UserList = ({ users }) => {
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
   const [searchParameters, setSearchParameters] = useState("")
   const theme = useTheme();
-
-  const test = () => {
-    console.log(users)
-  }
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -29,8 +25,6 @@ const UserList = ({ users }) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-
-  console.log(searchParameters)
 
   return (
     <Container sx={{ display: "block" }}>
@@ -64,7 +58,7 @@ const UserList = ({ users }) => {
                 }
               }}
             />
-            <Button variant="contained" color="secondary" sx={{ marginLeft: '1rem' }} onClick={test}>
+            <Button variant="contained" color="secondary" sx={{ marginLeft: '1rem' }}>
               <SearchIcon />
             </Button>
           </Box>
@@ -121,7 +115,7 @@ const UserList = ({ users }) => {
       </TableContainer>
       <TablePagination
         sx={{ width: "80%", margin: "0 auto" }}
-        rowsPerPageOptions={[10, 30, 100]}
+        rowsPerPageOptions={[5, 10, 100]}
         component="div"
         count={users.length}
         rowsPerPage={rowsPerPage}

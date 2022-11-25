@@ -10,6 +10,8 @@ import { ThemeProvider } from "@mui/material";
 import theme from "theme";
 import NewManager from "pages/sysadmin/NewManager";
 import UpdatePatient from "pages/patient/UpdatePatient";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -27,6 +29,7 @@ function App() {
           </Routes>
         </Layout>
       </Router>
+      <ToastContainer />
     </ThemeProvider>
   );
 }

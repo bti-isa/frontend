@@ -8,6 +8,8 @@ import { Form } from 'react-final-form';
 import { useState, useEffect } from "react";
 import REGEX from "constants/regex";
 import Loading from "components/Loading";
+import { useNavigate } from "react-router-dom";
+import ROUTES from "config/routes";
 
 const numberRegex = new RegExp(REGEX.NUMBER);
 
@@ -44,6 +46,7 @@ const useFetchData = (path) => {
 const UpdatePatient = () => {
 
     const { data, address, location, loading } = useFetchData("Patient/6");
+    const navigate = useNavigate();
 
     const validate = (values) => {
         let returnObject = {}
@@ -108,12 +111,11 @@ const UpdatePatient = () => {
             }
         }
 
-        console.log(UpdatePatientDTO)
-
         const update = async () => {
             try {
                 const { } = await axios.patch(`${CONSTANTS.API}Patient/`, UpdatePatientDTO);
                 console.info("User successfully updated.");
+                navigate(ROUTES.USER_PAGE);
             } catch (error) {
                 console.error(error);
             }

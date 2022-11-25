@@ -4,15 +4,12 @@ import { TextField, Select } from 'mui-rff';
 
 const NewManagerForm = () => {
     const { data, loading } = useFetchData('BloodBank/simple')
-    const handle = () => {
-        console.log(data)
-    }
 
     const data1 = [1, 2, 3]
 
     return (
         <>
-            <Typography variant="h4" color="secondary" onClick={handle}>
+            <Typography variant="h4" color="secondary">
                 Manager Registration
             </Typography>
 

@@ -1,5 +1,5 @@
 import "./RegisterUser.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -66,8 +66,6 @@ const RegisterUser = () => {
         latitude: 0,
       },
     };
-
-    console.log(newUserDto);
 
     if (passwordMatch && !errEmail && !errJmbg && !errPhone) {
       fetch("http://localhost:8080/api/Patient/", {
@@ -195,8 +193,9 @@ const RegisterUser = () => {
               <select
                 onChange={(e) => setGender(e.target.value)}
                 className="select"
+                defaultValue=" "
               >
-                <option selected disabled value=" ">
+                <option disabled value=" ">
                   &#160;
                 </option>
                 <option value="MALE">Male</option>
