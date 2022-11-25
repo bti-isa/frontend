@@ -2,6 +2,9 @@ import { Container, Paper, Table, TableBody, TableCell, TableContainer, TableHea
 import { useState } from "react";
 import PersonIcon from "@mui/icons-material/Person";
 import SearchIcon from '@mui/icons-material/Search';
+import { useEffect } from "react";
+import axios from "axios";
+import CONSTANTS from "constants/constants";
 
 const styles = {
   cell: {
@@ -16,6 +19,23 @@ const UserList = ({ users }) => {
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [searchParameters, setSearchParameters] = useState("")
   const theme = useTheme();
+  const [data, setData] = useState(users)
+
+  useEffect(() => {
+    const SearchDTO = {
+      searchParameter: searchParameters,
+    }
+
+    axios.post(`${CONSTANTS.API}Patient/search`, SearchDTO).then(
+      (response) => {
+        setData(response.data)
+        console.log(data)
+      },
+      (error) => {
+        alert(error);
+      }
+    )
+  }, [searchParameters]);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -86,11 +106,7 @@ const UserList = ({ users }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {users
-              .filter(user =>
-              (user.firstname.toLowerCase().includes(searchParameters)
-                || user.lastname.toLowerCase().includes(searchParameters)
-              ))
+            {data
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
