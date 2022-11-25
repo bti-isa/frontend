@@ -76,8 +76,9 @@ const UserHome = () => {
   };
 
   useEffect(() => {
-    getData();
     const SearchDTO = {
+      pageSize: rowsPerPage,
+      pageNumber: page,
       name: searchName,
       city: searchCity,
       street: searchStreet,
@@ -87,14 +88,14 @@ const UserHome = () => {
       rating: searchRating,
     };
 
-    // axios.post(`${CONSTANTS.API}BloodBank/search`, SearchDTO).then(
-    //   (response) => {
-    //     setData(response.data);
-    //   },
-    //   (error) => {
-    //     alert(error);
-    //   }
-    // );
+    axios.post(`${CONSTANTS.API}BloodBank/search`, SearchDTO).then(
+      (response) => {
+        setData(response.data);
+      },
+      (error) => {
+        alert(error);
+      }
+    );
   }, [searchName, searchCity, searchRating, searchStreet]);
 
   return (
