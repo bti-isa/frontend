@@ -17,6 +17,12 @@ const TemporaryNavigation = () => {
                         Add new manager/center
                     </Button>
                 </Link>
+                <Divider orientation="vertical" flexItem />
+                <Link to={ROUTES.SYSADMIN_NEW_SYSTEM_ADMIN}>
+                    <Button variant="text" color="primary">
+                        Add new system admin
+                    </Button>
+                </Link>
             </Toolbar>
         </>
     );
