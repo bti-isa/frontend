@@ -12,8 +12,10 @@ import theme from "theme";
 import NewManager from "pages/sysadmin/NewManager";
 import UpdatePatient from "pages/patient/UpdatePatient";
 import WelcomePage from "pages/welcome/Welcome";
-import 'react-toastify/dist/ReactToastify.css';
+import UpdateAdmin from "components/Admin/UpdateAdmin";
+import UpdateBloodBank from "components/BloodBank/UpdateBloodBank";
 import WithoutNav from "components/Layout/WithoutNav";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
               <Route path="/sysadmin/new/manager" element={<NewManager />} />
               <Route path="/user" element={<User />} />
               <Route path="/update-patient" element={<UpdatePatient />} />
+              <Route path="/update-bloodbank/:bloodBankId" element={<UpdateBloodBank />} />
+              <Route path="/update-admin/:adminId" element={<UpdateAdmin/>} />
               <Route path="/poll" element={<Poll />} />  
             </Route>
           </Routes>

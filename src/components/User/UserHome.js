@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import "./UserHome.css";
 import CONSTANTS from "constants/constants";
+import { Link } from "react-router-dom";
 import TablePagination from "@mui/material/TablePagination";
 
 const UserHome = () => {
@@ -174,6 +175,9 @@ const UserHome = () => {
               <th className="th" onClick={() => sorting("description")}>
                 Description
               </th>
+              <th className="th">
+                Update
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -187,6 +191,7 @@ const UserHome = () => {
                 </td>
                 <td className="td">{bloodBank.rating}</td>
                 <td className="td">{bloodBank.description}</td>
+                <td className="td"><Link to={`/update-bloodbank/${bloodBank.id}`}>Update</Link></td>
               </tr>
             ))}
           </tbody>
