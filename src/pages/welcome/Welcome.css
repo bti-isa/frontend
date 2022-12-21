@@ -1,0 +1,136 @@
+
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.main-container{
+    height: 100vh;
+}
+
+.main-container .menu{
+    display: flex;
+    justify-content: space-between;
+    background-color: #b30c2e;
+}
+
+.main-container .menu .logo {
+    display: flex;
+    align-items: center;
+    margin-left: 4rem;
+    color: #fefefe;
+    font-size: 1.5rem;
+}
+
+.main-container .menu ul{
+    list-style: none;
+    display: flex;
+    margin-right: 3rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.main-container .menu ul li{
+    font-size: 1.3rem;
+    padding-left: 2rem;
+    cursor: pointer;
+}
+
+.main-container .menu ul li a{
+    color: #fefefe;
+    text-decoration: none;
+}
+
+.wrapper{
+    display: flex;
+    width: 100%;
+    margin-top: 3rem;
+}
+
+.wrapper .left {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper .left .left-content h1{
+    font-size: 3rem;
+    letter-spacing: 5px;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-weight: bolder;
+    color: #b30c2e;
+}
+
+.wrapper .left .left-content p {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.wrapper .right{
+    width: 50%;
+}
+
+.wrapper .right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600&display=swap');
+
+.wrapper .left .left-content span {
+    margin-top: 1rem;
+    position: relative;
+    display: inline-flex;
+    width: 150px;
+    height: 45px;
+    perspective: 12000px;
+}
+
+.wrapper .left .left-content span a {
+    font-size: 1.2rem;
+    transform-style: preserve-3d;
+    transform: translateZ(-25px);
+    transition: transform .25s;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+.wrapper .left .left-content span a:before,
+.wrapper .left .left-content span a:after {
+    position: absolute;
+    content: "See more...";
+    height: 45px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #b30c2e;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.wrapper .left .left-content span a:before {
+    color: #b30c2e;
+    background: #fff;
+    transform: rotateY(0deg) translateZ(25px);
+}
+
+.wrapper .left .left-content span a:after {
+    color: #fff;
+    background: #b30c2e;
+    transform: rotateX(90deg) translateZ(25px);
+}
+
+.wrapper .left .left-content span a:hover {
+    transform: translateZ(-25px) rotateX(-90deg);
+}
+
+.blood-banks{
+    margin-top: 200px;
+}
+
