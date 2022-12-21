@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "components/Layout/Layout";
 import NoRegistration from "pages/NoRegistration";
+import Login from "pages/Login";
 import Admin from "pages/Admin";
 import Users from "pages/sysadmin/Users";
 import User from "pages/User";
@@ -11,7 +12,7 @@ import theme from "theme";
 import NewManager from "pages/sysadmin/NewManager";
 import UpdatePatient from "pages/patient/UpdatePatient";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
       <Router>
         <Layout>
           <Routes>
-            <Route path="/" element={<NoRegistration />} />
+            <Route path="/" element={<Login />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/sysadmin/users" element={<Users />} />
             <Route path="/sysadmin/new/manager" element={<NewManager />} />
