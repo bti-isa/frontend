@@ -17,6 +17,11 @@ const TemporaryNavigation = () => {
                         Add new manager/center
                     </Button>
                 </Link>
+                <Link to={ROUTES.SYSADMIN_COMPLAINTS}>
+                    <Button variant="text" color="primary">
+                        Complaints
+                    </Button>
+                </Link>
             </Toolbar>
         </>
     );
