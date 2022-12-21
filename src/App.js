@@ -22,9 +22,9 @@ function App() {
           <Routes>
             <Route element={<WithoutNav />}>
               <Route path="/" element={<WelcomePage />} />
+              <Route path="/home" element={<NoRegistration />} />
             </Route>
             <Route element={<Layout />}>
-              <Route path="/home" element={<NoRegistration />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/sysadmin/users" element={<Users />} />
               <Route path="/sysadmin/new/manager" element={<NewManager />} />

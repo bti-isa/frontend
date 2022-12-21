@@ -1,5 +1,3 @@
-
-
 *{
     padding: 0;
     margin: 0;
@@ -40,6 +38,10 @@
 .main-container .menu ul li a{
     color: #fefefe;
     text-decoration: none;
+}
+
+.main-container .menu ul li a:hover {
+    text-decoration: underline;
 }
 
 .wrapper{

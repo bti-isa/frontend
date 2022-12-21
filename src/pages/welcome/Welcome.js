@@ -11,8 +11,8 @@ const WelcomePage = () =>{
                 <div className='menu'>
                     <div className='logo'>BTI   HOSPITAL</div>
                     <ul>
-                        <li><Link to='/'>Already a donor?</Link></li>
-                        <li><Link to='/'>Start donating now!</Link></li>
+                        <li><a href='/home'>Already a donor?</a></li>
+                        <li><Link to='/home'>Start donating now!</Link></li>
                     </ul>
                 </div>
             </section>
@@ -31,11 +31,9 @@ const WelcomePage = () =>{
                 </div>
             </section>
         </div>
-        <div className='blood-banks'>
-            <section id='blood-banks'>
-                <p>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</p>
-            </section>
-        </div>
+        <section id='blood-banks'>
+            <div className='blood-banks'></div>
+        </section>
         </div>
     )
 }
