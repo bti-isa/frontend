@@ -21,6 +21,7 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<Login />} />
+            <Route path="/register" element={<NoRegistration />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/sysadmin/users" element={<Users />} />
             <Route path="/sysadmin/new/manager" element={<NewManager />} />

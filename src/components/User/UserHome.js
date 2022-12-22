@@ -16,9 +16,7 @@ const UserHome = () => {
 
   const getData = () => {
     axios
-      .get(
-        `http://localhost:8080/api/BloodBank?page=${page}&size=${rowsPerPage}`
-      )
+      .get(`BloodBank?page=${page}&size=${rowsPerPage}`)
       .then((res) => setData(res.data));
   };
 
@@ -88,7 +86,7 @@ const UserHome = () => {
       rating: searchRating,
     };
 
-    axios.post(`${CONSTANTS.API}BloodBank/search`, SearchDTO).then(
+    axios.post(`BloodBank/search`, SearchDTO).then(
       (response) => {
         setData(response.data);
       },

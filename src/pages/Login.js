@@ -1,6 +1,7 @@
 import { dividerClasses } from "@mui/material";
 import { useState } from "react";
 import axios from "axios";
+import axiosInstance from "config/AxiosInstance";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -12,6 +13,9 @@ const Login = () => {
         password,
       })
       .then((res) => localStorage.setItem("token", JSON.stringify(res.data)));
+  };
+  const test = (e) => {
+    axiosInstance.post(`polls/add`, {}).then((res) => console.log(res));
   };
   return (
     <>
@@ -31,6 +35,7 @@ const Login = () => {
       ></input>
       <div>
         <button onClick={login}>Login</button>
+        <button onClick={test}>Test</button>
       </div>
     </>
   );
