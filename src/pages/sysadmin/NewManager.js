@@ -12,6 +12,7 @@ import { useState } from "react";
 import { Form } from 'react-final-form';
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import {axiosInstance} from "../../config/https.js"
 
 const emailRegex = new RegExp(REGEX.EMAIL)
 const numberRegex = new RegExp(REGEX.NUMBER)
@@ -123,7 +124,7 @@ const NewManager = () => {
             }
         }
         if (showCreateCenterForm) {
-            await axios.post(`${CONSTANTS.API}BloodBank/add`, NewCenterDTO)
+            await axiosInstance.post(`${CONSTANTS.API}BloodBank/add`, NewCenterDTO)
                 .catch((error) => toast('Bank registration unsuccessful 😢💔'))
                 .then((response) => {
                     if (response === undefined) return null;
@@ -147,7 +148,7 @@ const NewManager = () => {
                             latitude: values.latitude
                         }
                     }
-                    axios.post(`${CONSTANTS.API}Admin/add`, NewManagerDTO)
+                    axiosInstance.post(`${CONSTANTS.API}Admin/add`, NewManagerDTO)
                         .catch((error) => {
                             toast('Admin registration unsuccessful 😢💔')
                         })
@@ -178,7 +179,7 @@ const NewManager = () => {
                     latitude: values.latitude
                 }
             }
-            axios.post(`${CONSTANTS.API}Admin/add`, NewManagerDTO)
+            axiosInstance.post(`${CONSTANTS.API}Admin/add`, NewManagerDTO)
                 .catch((error) => {
                     toast('Registration unsuccessful 😢💔')
                 })

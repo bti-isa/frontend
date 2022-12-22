@@ -26,6 +26,7 @@ import { useContext } from "react";
 import AuthContext from "store/auth-context";
 import NotFound from "pages/error/NotFound";
 import ShowBloodBank from "pages/show-bloodbank/ShowBloodBank";
+import ScheduleAppointment from "pages/patient/ScheduleAppointment";
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -55,8 +56,13 @@ function App() {
               />
               <Route path="/update-admin/:adminId" element={<UpdateAdmin />} />
               <Route path="/poll" element={<Poll />} />
+              <Route
+                path="/schedule-appointment"
+                element={<ScheduleAppointment />}
+              />
             </Route>
           )}
+
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </Router>
