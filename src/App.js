@@ -13,6 +13,7 @@ import UpdatePatient from "pages/patient/UpdatePatient";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Complaints from "pages/sysadmin/Complaints";
+import CalendarPage from "pages/instituteadmin/CalendarPage";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/update-patient" element={<UpdatePatient />} />
             <Route path="/poll" element={<Poll />} />
             <Route path="/sysadmin/complaints" element={<Complaints />} />
+            <Route path="/admin/calendar" element={<CalendarPage />} />
           </Routes>
         </Layout>
       </Router>
