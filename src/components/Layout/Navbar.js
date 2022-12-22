@@ -18,11 +18,6 @@ const Navbar = () => {
   return (
     <AppBar>
       <Stack direction='row' sx={{ padding: '0.5rem' }}>
-        <Link to={ROUTES.HOME_PAGE}>
-          <Button variant="contained" color="secondary" sx={{ marginLeft: '1rem' }}>
-            No reg
-          </Button>
-        </Link>
         <Link to={ROUTES.USER_PAGE}>
           <Button variant="contained" color="secondary" sx={{ marginLeft: '1rem' }}>
             User
