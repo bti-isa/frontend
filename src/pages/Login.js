@@ -2,6 +2,7 @@ import { dividerClasses } from "@mui/material";
 import { useState } from "react";
 import axios from "axios";
 import axiosInstance from "config/AxiosInstance";
+import jwt from "jwt-decode";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -12,7 +13,17 @@ const Login = () => {
         username,
         password,
       })
-      .then((res) => localStorage.setItem("token", JSON.stringify(res.data)));
+      .then((res) => {
+        localStorage.setItem("token", JSON.stringify(res.data));
+        localStorage.setItem(
+          "username",
+          JSON.stringify(jwt(JSON.stringify(res.data)).sub)
+        );
+        localStorage.setItem(
+          "role",
+          JSON.stringify(jwt(JSON.stringify(res.data)).authorities[0].authority)
+        );
+      });
   };
   const test = (e) => {
     axiosInstance.post(`polls/add`, {}).then((res) => console.log(res));
