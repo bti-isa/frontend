@@ -20,6 +20,7 @@ import AuthPage from "pages/auth/AuthPage";
 import { useContext } from "react";
 import AuthContext from "store/auth-context";
 import NotFound from "pages/error/NotFound";
+import ScheduleAppointment from "pages/patient/ScheduleAppointment";
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -27,24 +28,24 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-          <Routes>
-            {!authCtx.isLoggedIn && <Route element={<WithoutNav />}>
-              <Route path="/" element={<WelcomePage />} />
-              <Route path="/registration" element={<NoRegistration />} />
-              <Route path="/auth" element={<AuthPage />} />
-            </Route>}
-            {authCtx.isLoggedIn && <Route element={<Layout />}>
-              <Route path="/admin" element={<Admin />} />
-              <Route path="/sysadmin/users" element={<Users />} />
-              <Route path="/sysadmin/new/manager" element={<NewManager />} />
-              <Route path="/user" element={<User />} />
-              <Route path="/update-patient" element={<UpdatePatient />} />
-              <Route path="/update-bloodbank/:bloodBankId" element={<UpdateBloodBank />} />
-              <Route path="/update-admin/:adminId" element={<UpdateAdmin/>} />
-              <Route path="/poll" element={<Poll />} />  
-            </Route>}
-            <Route path="*" element={<NotFound/>}></Route>
-         </Routes>
+        <Routes>
+          {!authCtx.isLoggedIn && <Route element={<WithoutNav />}>
+            <Route path="/" element={<WelcomePage />} />
+            <Route path="/registration" element={<NoRegistration />} />
+            <Route path="/auth" element={<AuthPage />} />
+          </Route>}
+          {authCtx.isLoggedIn && <Route element={<Layout />}>
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/sysadmin/users" element={<Users />} />
+            <Route path="/sysadmin/new/manager" element={<NewManager />} />
+            <Route path="/user" element={<User />} />
+            <Route path="/update-patient" element={<UpdatePatient />} />
+            <Route path="/update-bloodbank/:bloodBankId" element={<UpdateBloodBank />} />
+            <Route path="/update-admin/:adminId" element={<UpdateAdmin />} />
+            <Route path="/poll" element={<Poll />} />
+            <Route path="/schedule-appointment" element={<ScheduleAppointment />} /> </Route>}
+          <Route path="*" element={<NotFound />}></Route>
+        </Routes>
       </Router>
       <ToastContainer />
     </ThemeProvider>
