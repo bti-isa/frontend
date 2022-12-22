@@ -4,6 +4,7 @@ import Poll from "components/Poll/Poll";
 import { axiosInstance } from "config/https";
 import { useNavigate } from "react-router-dom";
 import { Radio } from "@mui/material";
+import { toast } from "react-toastify";
 import jwt from "jwt-decode";
 const ShowBBDetails = (props) => {
   const Questions = [
@@ -98,7 +99,15 @@ const ShowBBDetails = (props) => {
             other,
           },
         })
-        .then((res) => navigate("/user"));
+        .then(
+          (res) => {
+            navigate("/user");
+          },
+          (error) => {
+            toast(error.response.data);
+            return;
+          }
+        );
     }
   };
 

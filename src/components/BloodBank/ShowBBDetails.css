@@ -8,3 +8,9 @@
   color: #b30c2e;
   margin-bottom: 4rem;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
