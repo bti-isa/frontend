@@ -8,9 +8,25 @@
 .title{
     margin-top: 1rem;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .info{
+    width: 80%;
+    margin: auto;
+}
 
+.info-item{
+    display: flex;
+    padding-top: 2rem;
+    font-size: 1.5rem;
+    justify-content: space-between;
+}
+
+.info-item input{
+    border: 0px;
+    border-bottom: 1px solid black;
+    font-weight: 600;
+    font-size: 1rem;
 }

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import classes from './AppointmentOptions.module.css';
 
-const AppointmetOptions = () =>{
+const AppointmetOptions = (props) =>{
     return(
         <div className={classes["option-container"]}>
             <button>Punish</button>
