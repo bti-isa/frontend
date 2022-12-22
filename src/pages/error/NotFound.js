@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Box, Button, Typography } from '@mui/material';
-import { purple } from '@mui/material/colors';
 import AuthContext from 'store/auth-context';
 import { useNavigate } from 'react-router-dom';
 
