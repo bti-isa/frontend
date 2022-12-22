@@ -5,6 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useEffect } from "react";
 import axios from "axios";
 import CONSTANTS from "constants/constants";
+import {axiosInstance} from "../config/https.js"
 
 const styles = {
   cell: {
@@ -26,7 +27,7 @@ const UserList = ({ users }) => {
       searchParameter: searchParameters,
     }
 
-    axios.post(`${CONSTANTS.API}Patient/search`, SearchDTO).then(
+    axiosInstance.post(`${CONSTANTS.API}Patient/search`, SearchDTO).then(
       (response) => {
         setData(response.data)
         console.log(data)
@@ -118,7 +119,7 @@ const UserList = ({ users }) => {
                       {row.lastname}
                     </TableCell>
                     <TableCell align="right" style={{ minWidth: "auto" }}>
-                      {row.email}
+                      {row.username}
                     </TableCell>
                     <TableCell align="right" style={{ minWidth: "auto" }}>
                       {row.gender}

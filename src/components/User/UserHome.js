@@ -1,8 +1,12 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { axiosInstance } from "../../config/https";
+import { useState, useEffect, useContext } from "react";
 import "./UserHome.css";
 import CONSTANTS from "constants/constants";
+import { Link } from "react-router-dom";
 import TablePagination from "@mui/material/TablePagination";
+import AuthContext from "store/auth-context";
+import jwt_decode from "jwt-decode";
 
 const UserHome = () => {
   const [data, setData] = useState([]);
@@ -13,12 +17,13 @@ const UserHome = () => {
   const [searchRating, setSearchRating] = useState("");
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(3);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [isPatient, setIsPatient] = useState(false);
+  const authCtx = useContext(AuthContext);
 
   const getData = () => {
     axios
-      .get(
-        `http://localhost:8080/api/BloodBank?page=${page}&size=${rowsPerPage}`
-      )
+      .get(`${CONSTANTS.API}BloodBank?page=${page}&size=${rowsPerPage}`)
       .then((res) => setData(res.data));
   };
 
@@ -30,27 +35,21 @@ const UserHome = () => {
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(event.target.value);
     setPage(0);
-    axios
-      .get(
-        `http://localhost:8080/api/BloodBank?page=${page}&size=${event.target.value}`
-      )
+    axiosInstance
+      .get(`BloodBank?page=${page}&size=${event.target.value}`)
       .then((res) => setData(res.data));
   };
 
   const sorting = (col) => {
     if (order === "asc") {
-      axios
-        .get(
-          `http://localhost:8080/api/BloodBank?page=${page}&size=${rowsPerPage}&sort=${col},${order}`
-        )
+      axiosInstance
+        .get(`BloodBank?page=${page}&size=${rowsPerPage}&sort=${col},${order}`)
         .then((res) => setData(res.data));
       setOrder("desc");
     }
     if (order === "desc") {
-      axios
-        .get(
-          `http://localhost:8080/api/BloodBank?page=${page}&size=${rowsPerPage}&sort=${col},${order}`
-        )
+      axiosInstance
+        .get(`BloodBank?page=${page}&size=${rowsPerPage}&sort=${col},${order}`)
         .then((res) => setData(res.data));
       setOrder("asc");
     }
@@ -58,17 +57,17 @@ const UserHome = () => {
 
   const sortingSpecial = (col, col1) => {
     if (order === "asc") {
-      axios
+      axiosInstance
         .get(
-          `http://localhost:8080/api/BloodBank?page=${page}&size=${rowsPerPage}&sort=${col}.${col1},${order}`
+          `BloodBank?page=${page}&size=${rowsPerPage}&sort=${col}.${col1},${order}`
         )
         .then((res) => setData(res.data));
       setOrder("desc");
     }
     if (order === "desc") {
-      axios
+      axiosInstance
         .get(
-          `http://localhost:8080/api/BloodBank?page=${page}&size=${rowsPerPage}&sort=${col}.${col1},${order}`
+          `BloodBank?page=${page}&size=${rowsPerPage}&sort=${col}.${col1},${order}`
         )
         .then((res) => setData(res.data));
       setOrder("asc");
@@ -88,12 +87,14 @@ const UserHome = () => {
       rating: searchRating,
     };
 
+    setLoggedIn(authCtx.isLoggedIn);
+    setIsPatient(authCtx.isPatient);
     axios.post(`${CONSTANTS.API}BloodBank/search`, SearchDTO).then(
       (response) => {
         setData(response.data);
       },
       (error) => {
-        alert(error);
+        //alert(error);
       }
     );
   }, [searchName, searchCity, searchRating, searchStreet]);
@@ -174,6 +175,7 @@ const UserHome = () => {
               <th className="th" onClick={() => sorting("description")}>
                 Description
               </th>
+              {loggedIn && !isPatient && <th className="th">Update</th>}
             </tr>
           </thead>
           <tbody>
@@ -187,6 +189,11 @@ const UserHome = () => {
                 </td>
                 <td className="td">{bloodBank.rating}</td>
                 <td className="td">{bloodBank.description}</td>
+                {loggedIn && !isPatient && (
+                  <td className="td">
+                    <Link to={`/update-bloodbank/${bloodBank.id}`}>Update</Link>
+                  </td>
+                )}
               </tr>
             ))}
           </tbody>
