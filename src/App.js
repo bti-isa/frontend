@@ -12,6 +12,7 @@ import NewManager from "pages/sysadmin/NewManager";
 import UpdatePatient from "pages/patient/UpdatePatient";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import ScheduleAppointment from "pages/patient/ScheduleAppointment";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/user" element={<User />} />
             <Route path="/update-patient" element={<UpdatePatient />} />
             <Route path="/poll" element={<Poll />} />
+            <Route path="/schedule-appointment" element={<ScheduleAppointment />} />
           </Routes>
         </Layout>
       </Router>
