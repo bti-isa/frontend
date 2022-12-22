@@ -1,0 +1,18 @@
+.main-container{
+    border: 2px solid red;
+    height: 70vh;
+    width: 70%;
+    display: flex;
+    margin: auto;
+}
+
+.left{
+    width: 60%;
+    padding: 2rem;
+}
+
+.right{
+    width: 40%;
+    padding: 2rem;
+    justify-content: right;
+}

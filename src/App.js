@@ -20,6 +20,7 @@ import AuthPage from "pages/auth/AuthPage";
 import { useContext } from "react";
 import AuthContext from "store/auth-context";
 import NotFound from "pages/error/NotFound";
+import AppointmentDetail from "pages/appointment/AppointmentDetail";
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -41,6 +42,7 @@ function App() {
               <Route path="/update-patient" element={<UpdatePatient />} />
               <Route path="/update-bloodbank/:bloodBankId" element={<UpdateBloodBank />} />
               <Route path="/update-admin/:adminId" element={<UpdateAdmin/>} />
+              <Route path="/appointment-detail/:Id" element={<AppointmentDetail/>} />
               <Route path="/poll" element={<Poll />} />  
             </Route>}
             <Route path="*" element={<NotFound/>}></Route>
