@@ -6,6 +6,7 @@ import CONSTANTS from "constants/constants";
 import { Link } from "react-router-dom";
 import TablePagination from "@mui/material/TablePagination";
 import AuthContext from "store/auth-context";
+import jwt_decode from "jwt-decode";
 
 const UserHome = () => {
   const [data, setData] = useState([]);
@@ -17,13 +18,12 @@ const UserHome = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(3);
   const [loggedIn, setLoggedIn] = useState(false);
-  const authCtx = useContext(AuthContext)
+  const [isPatient, setIsPatient] = useState(false);
+  const authCtx = useContext(AuthContext);
 
   const getData = () => {
     axios
-      .get(
-        `${CONSTANTS.API}BloodBank?page=${page}&size=${rowsPerPage}`
-      )
+      .get(`${CONSTANTS.API}BloodBank?page=${page}&size=${rowsPerPage}`)
       .then((res) => setData(res.data));
   };
 
@@ -36,26 +36,20 @@ const UserHome = () => {
     setRowsPerPage(event.target.value);
     setPage(0);
     axiosInstance
-      .get(
-        `BloodBank?page=${page}&size=${event.target.value}`
-      )
+      .get(`BloodBank?page=${page}&size=${event.target.value}`)
       .then((res) => setData(res.data));
   };
 
   const sorting = (col) => {
     if (order === "asc") {
       axiosInstance
-        .get(
-          `BloodBank?page=${page}&size=${rowsPerPage}&sort=${col},${order}`
-        )
+        .get(`BloodBank?page=${page}&size=${rowsPerPage}&sort=${col},${order}`)
         .then((res) => setData(res.data));
       setOrder("desc");
     }
     if (order === "desc") {
       axiosInstance
-        .get(
-          `BloodBank?page=${page}&size=${rowsPerPage}&sort=${col},${order}`
-        )
+        .get(`BloodBank?page=${page}&size=${rowsPerPage}&sort=${col},${order}`)
         .then((res) => setData(res.data));
       setOrder("asc");
     }
@@ -93,7 +87,14 @@ const UserHome = () => {
       rating: searchRating,
     };
 
-    setLoggedIn(authCtx.isLoggedIn)
+    setLoggedIn(authCtx.isLoggedIn);
+    if (localStorage.getItem("token") != null)
+      if (
+        jwt_decode(localStorage.getItem("token")).authorities[0].authority ==
+        "PATIENT"
+      )
+        setIsPatient(false);
+      else setIsPatient(true);
     axios.post(`${CONSTANTS.API}BloodBank/search`, SearchDTO).then(
       (response) => {
         setData(response.data);
@@ -180,9 +181,7 @@ const UserHome = () => {
               <th className="th" onClick={() => sorting("description")}>
                 Description
               </th>
-              {loggedIn && <th className="th">
-                Update
-              </th>}
+              {loggedIn && isPatient && <th className="th">Update</th>}
             </tr>
           </thead>
           <tbody>
@@ -196,7 +195,11 @@ const UserHome = () => {
                 </td>
                 <td className="td">{bloodBank.rating}</td>
                 <td className="td">{bloodBank.description}</td>
-                {loggedIn && <td className="td"><Link to={`/update-bloodbank/${bloodBank.id}`}>Update</Link></td>}
+                {loggedIn && isPatient && (
+                  <td className="td">
+                    <Link to={`/update-bloodbank/${bloodBank.id}`}>Update</Link>
+                  </td>
+                )}
               </tr>
             ))}
           </tbody>
