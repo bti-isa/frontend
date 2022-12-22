@@ -1,4 +1,5 @@
 import axios from "axios";
+import { axiosInstance } from "../../config/https";
 import { useState, useEffect } from "react";
 import "./UserHome.css";
 import CONSTANTS from "constants/constants";
@@ -16,9 +17,9 @@ const UserHome = () => {
   const [rowsPerPage, setRowsPerPage] = useState(3);
 
   const getData = () => {
-    axios
+    axiosInstance
       .get(
-        `http://localhost:8080/api/BloodBank?page=${page}&size=${rowsPerPage}`
+        `BloodBank?page=${page}&size=${rowsPerPage}`
       )
       .then((res) => setData(res.data));
   };
@@ -31,26 +32,26 @@ const UserHome = () => {
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(event.target.value);
     setPage(0);
-    axios
+    axiosInstance
       .get(
-        `http://localhost:8080/api/BloodBank?page=${page}&size=${event.target.value}`
+        `BloodBank?page=${page}&size=${event.target.value}`
       )
       .then((res) => setData(res.data));
   };
 
   const sorting = (col) => {
     if (order === "asc") {
-      axios
+      axiosInstance
         .get(
-          `http://localhost:8080/api/BloodBank?page=${page}&size=${rowsPerPage}&sort=${col},${order}`
+          `BloodBank?page=${page}&size=${rowsPerPage}&sort=${col},${order}`
         )
         .then((res) => setData(res.data));
       setOrder("desc");
     }
     if (order === "desc") {
-      axios
+      axiosInstance
         .get(
-          `http://localhost:8080/api/BloodBank?page=${page}&size=${rowsPerPage}&sort=${col},${order}`
+          `BloodBank?page=${page}&size=${rowsPerPage}&sort=${col},${order}`
         )
         .then((res) => setData(res.data));
       setOrder("asc");
@@ -59,17 +60,17 @@ const UserHome = () => {
 
   const sortingSpecial = (col, col1) => {
     if (order === "asc") {
-      axios
+      axiosInstance
         .get(
-          `http://localhost:8080/api/BloodBank?page=${page}&size=${rowsPerPage}&sort=${col}.${col1},${order}`
+          `BloodBank?page=${page}&size=${rowsPerPage}&sort=${col}.${col1},${order}`
         )
         .then((res) => setData(res.data));
       setOrder("desc");
     }
     if (order === "desc") {
-      axios
+      axiosInstance
         .get(
-          `http://localhost:8080/api/BloodBank?page=${page}&size=${rowsPerPage}&sort=${col}.${col1},${order}`
+          `BloodBank?page=${page}&size=${rowsPerPage}&sort=${col}.${col1},${order}`
         )
         .then((res) => setData(res.data));
       setOrder("asc");
@@ -89,7 +90,7 @@ const UserHome = () => {
       rating: searchRating,
     };
 
-    axios.post(`${CONSTANTS.API}BloodBank/search`, SearchDTO).then(
+    axiosInstance.post(`BloodBank/search`, SearchDTO).then(
       (response) => {
         setData(response.data);
       },
