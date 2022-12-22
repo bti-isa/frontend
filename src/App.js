@@ -14,6 +14,7 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Complaints from "pages/sysadmin/Complaints";
 import CalendarPage from "pages/instituteadmin/CalendarPage";
+import NewAdmin from "pages/sysadmin/NewAdmin";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="/poll" element={<Poll />} />
             <Route path="/sysadmin/complaints" element={<Complaints />} />
             <Route path="/admin/calendar" element={<CalendarPage />} />
+            <Route path="/sysadmin/new/admin" element={<NewAdmin />} />
           </Routes>
         </Layout>
       </Router>
