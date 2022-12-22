@@ -73,7 +73,7 @@ const RegisterUser = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newUserDto),
       }).then(() => {
-        navigate("/home");
+        navigate("/");
       });
     }
   };
