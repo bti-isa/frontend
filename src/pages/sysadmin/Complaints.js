@@ -7,6 +7,7 @@ import CONSTANTS from "constants/constants";
 import Container from '@mui/material/Container'
 import { Toolbar, Typography } from "@mui/material";
 import TemporaryNavigation from "components/SysAdmin/TemporaryNavigation";
+import { axiosInstance } from "config/https"; 
 
 const Complaints = () => {
     const [pending, setPending] = useState([])
@@ -18,7 +19,7 @@ const Complaints = () => {
     }, [])
 
     const getData = (type) => {
-        axios.get(`${CONSTANTS.API}Complaint/${type}`).then((response) => {
+        axiosInstance.get(`${CONSTANTS.API}Complaint/${type}`).then((response) => {
             setPending(response.data)
             //setRefresh((value) => value+1)
         })

@@ -3,6 +3,7 @@ import axios from "axios";
 import CONSTANTS from "constants/constants";
 import { useState } from "react";
 import theme from "theme";
+import { axiosInstance } from "config/https";
 
 const ComplaintComponent = ({ complaint, getData, setRefresh }) => {
     const [input, setInput] = useState("")
@@ -26,7 +27,7 @@ const ComplaintComponent = ({ complaint, getData, setRefresh }) => {
             answer: input,
             id: complaint.id
         }
-        axios.patch(`${CONSTANTS.API}Complaint/answer`, dto)
+        axiosInstance.patch(`${CONSTANTS.API}Complaint/answer`, dto)
         getData()
         window.location.reload()
     }

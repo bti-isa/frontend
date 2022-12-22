@@ -10,6 +10,7 @@ import REGEX from "constants/regex";
 import { Form } from 'react-final-form';
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import {axiosInstance} from "../../config/https.js"
 
 const emailRegex = new RegExp(REGEX.EMAIL)
 const numberRegex = new RegExp(REGEX.NUMBER)
@@ -62,7 +63,7 @@ const NewAdmin = () => {
             gender: values.gender,
             role: "SYSTEM_ADMIN",
         }
-        await axios.post(`${CONSTANTS.API}SysAdmin/add`, NewSysAdminDTO)
+        await axiosInstance.post(`${CONSTANTS.API}SysAdmin/add`, NewSysAdminDTO)
             .catch((error) => {
                 toast('Admin registration unsuccessful 😢💔')
                 console.error(error)
