@@ -10,7 +10,7 @@ export default function NotFound() {
 
   const handleBack = () =>{
     if(loggedIn){
-        navigate('/poll')
+        navigate('/user')
         return;
     }
     navigate('/')

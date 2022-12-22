@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import jwt_decode from "jwt-decode";
 
 const AuthContext = React.createContext({
     token: '',
     isLoggedIn: false,
     login: (token) => {},
-    logout: () => {}
+    logout: () => {},
+    isPatient: false
 });
 
 export const AuthContextProvider = (props) => {
@@ -22,11 +24,22 @@ export const AuthContextProvider = (props) => {
         localStorage.removeItem('token');
     }
 
+    const isPatientHandler = () =>{
+        if(token == null)
+            return null;
+        
+        if(jwt_decode(localStorage.getItem("token")).authorities[0].authority === "PATIENT")
+              return true;
+        
+        return false;;
+    }
+
     const contextValue = {
         token: token,
         isLoggedIn: userIsLoggedIn,
         login: loginHandler,
-        logout: logoutHandler
+        logout: logoutHandler,
+        isPatient: isPatientHandler
     };
 
     return(

@@ -1,4 +1,4 @@
-import axios from "axios";
+import { axiosInstance } from "../config/https";
 import CONSTANTS from "constants/constants";
 import { useEffect, useState } from "react";
 
@@ -9,7 +9,7 @@ const useFetchData = (path) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const { data: response } = await axios.get(`${CONSTANTS.API}${path}`);
+                const { data: response } = await axiosInstance.get(`${CONSTANTS.API}${path}`);
                 setData(response);
             } catch (error) {
                 console.error(error)

@@ -23,7 +23,7 @@ const LoginForm = () => {
         password: password,
       }).then((res) => {
         authCtx.login(res.data)
-        navigate('/poll')
+        navigate('/user')
       });
   }
 
@@ -50,7 +50,7 @@ const LoginForm = () => {
             className={classes.toggle}
             onClick={switchToRegistration}
           >
-            Create new account
+            Create new account?
           </button>
         </div>
       </form>

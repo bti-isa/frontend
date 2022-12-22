@@ -1,4 +1,3 @@
-import logo from '../../images/logo.png'
 import right from '../../images/right.png'
 import { Link } from 'react-scroll'
 import './Welcome.css'
@@ -27,7 +26,7 @@ const WelcomePage = () =>{
                         </div>
                     </div>
                     <div className='right'>
-                        <img src={right} />
+                        <img src={right} alt="NE RADI SLIKA JBG"/>
                     </div>
                 </div>
             </section>

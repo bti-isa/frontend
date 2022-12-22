@@ -88,13 +88,7 @@ const UserHome = () => {
     };
 
     setLoggedIn(authCtx.isLoggedIn);
-    if (localStorage.getItem("token") != null)
-      if (
-        jwt_decode(localStorage.getItem("token")).authorities[0].authority ==
-        "PATIENT"
-      )
-        setIsPatient(false);
-      else setIsPatient(true);
+    setIsPatient(authCtx.isPatient);
     axios.post(`${CONSTANTS.API}BloodBank/search`, SearchDTO).then(
       (response) => {
         setData(response.data);
@@ -181,7 +175,7 @@ const UserHome = () => {
               <th className="th" onClick={() => sorting("description")}>
                 Description
               </th>
-              {loggedIn && isPatient && <th className="th">Update</th>}
+              {loggedIn && !isPatient && <th className="th">Update</th>}
             </tr>
           </thead>
           <tbody>
@@ -195,7 +189,7 @@ const UserHome = () => {
                 </td>
                 <td className="td">{bloodBank.rating}</td>
                 <td className="td">{bloodBank.description}</td>
-                {loggedIn && isPatient && (
+                {loggedIn && !isPatient && (
                   <td className="td">
                     <Link to={`/update-bloodbank/${bloodBank.id}`}>Update</Link>
                   </td>

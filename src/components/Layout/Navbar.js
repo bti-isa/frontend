@@ -1,7 +1,7 @@
 import { AppBar, Stack } from "@mui/material";
 import Button from "@mui/material/Button";
 import ROUTES from "config/routes";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "store/auth-context";
 
@@ -9,6 +9,11 @@ const Navbar = () => {
   const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.isLoggedIn;
   const navigate = useNavigate();
+  const [isPatient, setIsPatient] = useState(false);
+
+  useEffect(()=>{
+    setIsPatient(authCtx.isPatient)
+  },[])
 
   const handleLogout = () =>{
     authCtx.logout()
@@ -23,16 +28,16 @@ const Navbar = () => {
             User
           </Button>
         </Link>
-        <Link to={ROUTES.ADMIN_PAGE}>
+        {!isPatient && <Link to={ROUTES.ADMIN_PAGE}>
           <Button variant="contained" color="secondary" sx={{ marginLeft: '1rem' }}>
             Admin
           </Button>
-        </Link>
-        <Link to={ROUTES.SYSADMIN_USERS}>
+        </Link>}
+        {!isPatient && <Link to={ROUTES.SYSADMIN_USERS}>
           <Button variant="contained" color="secondary" sx={{ marginLeft: '1rem' }}>
             Sys admin
           </Button>
-        </Link>
+        </Link>}
        {isLoggedIn && <Link to="/" onClick={handleLogout}>
           <Button variant="contained" color="secondary" sx={{ marginLeft: '1rem' }}>
             Logout

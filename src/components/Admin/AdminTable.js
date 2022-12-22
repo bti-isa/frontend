@@ -4,7 +4,7 @@ import './AdminTable.css'
 
 export const AdminTable = (props) =>{
     const [data, setData] = useState(props.admins)
-
+    console.log(props)
     return(
         <div className="container">
         <h1>Admin Accounts</h1>
@@ -22,7 +22,7 @@ export const AdminTable = (props) =>{
                         <tr className="tr" key={admin.id}>
                             <td className="td">{admin.firstname}</td>
                             <td className="td">{admin.lastname}</td>
-                            <td className="td">{admin.email}</td>
+                            <td className="td">{admin.username}</td>
                             <td className="td"><Link to={`/update-admin/${admin.id}`}>Update</Link></td>
                         </tr>
                     ))}
