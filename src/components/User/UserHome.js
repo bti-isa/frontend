@@ -175,6 +175,7 @@ const UserHome = () => {
               <th className="th" onClick={() => sorting("description")}>
                 Description
               </th>
+              {loggedIn && <th className="th">Show available appointment</th>}
               {loggedIn && !isPatient && <th className="th">Update</th>}
             </tr>
           </thead>
@@ -189,6 +190,11 @@ const UserHome = () => {
                 </td>
                 <td className="td">{bloodBank.rating}</td>
                 <td className="td">{bloodBank.description}</td>
+                {loggedIn && (
+                  <td className="td">
+                    <Link to={`/show-bloodbank/${bloodBank.id}`}>Show</Link>
+                  </td>
+                )}
                 {loggedIn && !isPatient && (
                   <td className="td">
                     <Link to={`/update-bloodbank/${bloodBank.id}`}>Update</Link>

@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { Radio } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { axiosInstance } from "../../config/https";
 
 const Poll = () => {
   const Questions = [
@@ -69,7 +69,7 @@ const Poll = () => {
       setErr(true);
     else {
       setErr(false);
-      axios
+      axiosInstance
         .post("http://localhost:8080/api/polls/add", {
           weightOver50kg,
           commonCold,
@@ -80,7 +80,7 @@ const Poll = () => {
           dentalIntervention,
           other,
         })
-        .then((res) => navigate("/sysadmin/users"));
+        .then((res) => navigate("/user"));
     }
   };
 
