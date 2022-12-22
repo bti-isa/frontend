@@ -6,7 +6,7 @@ import axios from "axios";
 const RegisterUser = () => {
   const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [phoneNumber, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -29,7 +29,7 @@ const RegisterUser = () => {
 
   const check = () => {
     const checkUniqueDto = {
-      email,
+      username,
       phoneNumber,
       jmbg,
     };
@@ -48,7 +48,7 @@ const RegisterUser = () => {
     const newUserDto = {
       firstname,
       lastname,
-      email,
+      username,
       password,
       phoneNumber,
       occupation,
@@ -116,12 +116,12 @@ const RegisterUser = () => {
         <div className="row">
           <div className="row-elem">
             <div>
-              <label className="label">Email:</label>
+              <label className="label">Username:</label>
               <input
                 type="email"
                 required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 onBlur={check}
               />
               {errEmail && <p className="red">Email already exists.</p>}
