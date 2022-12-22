@@ -16,6 +16,7 @@ import UpdateAdmin from "components/Admin/UpdateAdmin";
 import UpdateBloodBank from "components/BloodBank/UpdateBloodBank";
 import WithoutNav from "components/Layout/WithoutNav";
 import 'react-toastify/dist/ReactToastify.css';
+import AuthPage from "pages/auth/AuthPage";
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
           <Routes>
             <Route element={<WithoutNav />}>
               <Route path="/" element={<WelcomePage />} />
-              <Route path="/home" element={<NoRegistration />} />
+              <Route path="/registration" element={<NoRegistration />} />
+              <Route path="/auth" element={<AuthPage />} />
             </Route>
             <Route element={<Layout />}>
               <Route path="/admin" element={<Admin />} />

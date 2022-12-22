@@ -94,7 +94,7 @@ const UserHome = () => {
         setData(response.data);
       },
       (error) => {
-        alert(error);
+        //alert(error);
       }
     );
   }, [searchName, searchCity, searchRating, searchStreet]);

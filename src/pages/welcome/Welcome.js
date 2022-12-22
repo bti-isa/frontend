@@ -12,8 +12,8 @@ const WelcomePage = () =>{
                 <div className='menu'>
                     <div className='logo'>BTI   HOSPITAL</div>
                     <ul>
-                        <li><a href='/'>Already a donor?</a></li>
-                        <li><a href='/home'>Start donating now!</a></li>
+                        <li><a href='/auth'>Already a donor?</a></li>
+                        <li><a href='/registration'>Start donating now!</a></li>
                     </ul>
                 </div>
             </section>
