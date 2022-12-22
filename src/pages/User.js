@@ -26,6 +26,11 @@ const User = () => {
             Poll
           </Button>
         </Link>
+        <Link to={"/schedule-appointment"}>
+          <Button variant="contained" color="primary">
+            Schedule appointment
+          </Button>
+        </Link>
       </Container>
       <UserHome />
     </>

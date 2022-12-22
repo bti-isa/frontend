@@ -1,30 +1,41 @@
 import "./AppointmentSelector.css";
-import axios from "axios";
+import { axiosInstance } from "../../config/https"
 import { useState, useEffect } from "react";
 import CONSTANTS from "constants/constants";
 import TablePagination from "@mui/material/TablePagination";
 import { TextField } from "@mui/material";
 import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { toast } from "react-toastify";
 
-const AppointmentSelector = () => {
+const AppointmentSelector = ({ appointmentId, setAppointmentId }) => {
     const [data, setData] = useState([]);
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(3);
-    const [dateTime, setDateTime] = useState(Date.now);
+    const [dateTime, setDateTime] = useState(null);
     const [direction, setDirection] = useState("ASC");
-    const [appointmentId, setAppointmentId] = useState();
 
     const getData = () => {
-        axios
+        if (dateTime === null) {
+            return;
+        }
+        axiosInstance
             .get(
                 `http://localhost:8080/api/Appointment/${page}/${rowsPerPage}/${direction}`, {
-                headers: {
+                params: {
                     'dateTime': dateTime
                 }
             }
             )
-            .then((res) => setData(res.data));
+            .then(
+                (res) => {
+                    setData(res.data);
+                    toast("Available bloodbanks.");
+                },
+                (err) => {
+                    toast("No bloodbanks match your criteria.");
+                }
+            );
     };
 
     const handleChangePage = (event, newPage) => {
@@ -54,8 +65,9 @@ const AppointmentSelector = () => {
         getData();
     }
 
-    const rowClick = (event) => {
-        setAppointmentId(event.target.key);
+    const rowClick = (appointmentId) => {
+        console.log(appointmentId)
+        setAppointmentId(appointmentId);
     }
 
     return (
@@ -73,7 +85,7 @@ const AppointmentSelector = () => {
                                 label="Choose date and time"
                                 value={dateTime}
                                 onChange={(newDateTime) => {
-                                    setDateTime(newDateTime);
+                                    setDateTime(newDateTime.$d);
                                     setDirection("ASC");
                                 }}
                             />
@@ -87,7 +99,7 @@ const AppointmentSelector = () => {
                 </div>
                 <div className="tableContainer">
                     <div>
-                        <table className="table" style={{ width: "800px", height: "500px", overflowY: "true" }}>
+                        <table className="table" style={{ width: "800px", overflowY: "true" }}>
                             <thead>
                                 <tr className="tr">
                                     <th
@@ -117,7 +129,7 @@ const AppointmentSelector = () => {
                             </thead>
                             <tbody>
                                 {data.map((appointment) => (
-                                    <tr className="tr" key={appointment.id} onClick={rowClick}>
+                                    <tr className="tr" key={appointment.id} onClick={() => rowClick(appointment.id)}>
                                         <td className="td">{appointment.bloodBank.name}</td>
                                         <td className="td">{appointment.bloodBank.address.country}</td>
                                         <td className="td">{appointment.bloodBank.address.city}</td>

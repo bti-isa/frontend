@@ -37,12 +37,9 @@
     width: 100%;
 }
 
-.tr:active {
-    background-color: #e3735e;
-}
-
 .tr:hover {
     background-color: #e3735e;
+    cursor: pointer;
 }
 
 .myDatePicker fieldset.MuiOutlinedInput-notchedOutline {

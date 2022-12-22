@@ -1,10 +1,13 @@
 import { Radio } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { axiosInstance } from "../../config/https"
+import jwt from "jwt-decode";
+import { toast } from "react-toastify";
 import "./PollForm.css";
+import ROUTES from "config/routes";
 
-const PollForm = () => {
+const PollForm = ({ appointmentId, setAppointmentId }) => {
     const Questions = [
         { id: 0, text: "Da li imate manje od 50kg?", answer: "" },
         { id: 1, text: "Da li imate simptome prehlade?", answer: "" },
@@ -63,14 +66,28 @@ const PollForm = () => {
             antibiotics === "" ||
             menstruation === "" ||
             dentalIntervention === "" ||
-            other === ""
+            other === "" ||
+            appointmentId === -1
         )
             setErr(true);
         else {
             setErr(false);
+            if (
+                weightOver50kg === "true" ||
+                commonCold === "true" ||
+                skinDiseases === "true" ||
+                problemWithPressure === "true" ||
+                antibiotics === "true" ||
+                menstruation === "true" ||
+                dentalIntervention === "true" ||
+                other === "true"
+            ) {
+                toast("Your poll info does not let you to donate blood. Thank you.");
+                return;
+            }
             let dto = {
-                appointmentId: 1,
-                patientId: 1,
+                appointmentId: appointmentId,
+                username: jwt(JSON.stringify(localStorage.getItem("token"))).sub,
                 poll: {
                     weightOver50kg: weightOver50kg,
                     commonCold: commonCold,
@@ -82,12 +99,20 @@ const PollForm = () => {
                     other: other
                 }
             }
-            //slanje zahteva
-            axios
+            axiosInstance
                 .patch(
                     `http://localhost:8080/api/Appointment/schedule`, dto
                 )
-                .then((res) => "");
+                .then(
+                    (res) => {
+                        toast("Appointment us successfullty scheduled.");
+                        navigate(ROUTES.USER_PAGE);
+                    },
+                    (error) => {
+                        toast(error.response.data);
+                        return;
+                    }
+                );
         }
     };
 
