@@ -1,10 +1,11 @@
 import axios from "axios";
 import { axiosInstance } from "../../config/https";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "./UserHome.css";
 import CONSTANTS from "constants/constants";
 import { Link } from "react-router-dom";
 import TablePagination from "@mui/material/TablePagination";
+import AuthContext from "store/auth-context";
 
 const UserHome = () => {
   const [data, setData] = useState([]);
@@ -15,11 +16,13 @@ const UserHome = () => {
   const [searchRating, setSearchRating] = useState("");
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(3);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const authCtx = useContext(AuthContext)
 
   const getData = () => {
-    axiosInstance
+    axios
       .get(
-        `BloodBank?page=${page}&size=${rowsPerPage}`
+        `${CONSTANTS.API}BloodBank?page=${page}&size=${rowsPerPage}`
       )
       .then((res) => setData(res.data));
   };
@@ -90,7 +93,8 @@ const UserHome = () => {
       rating: searchRating,
     };
 
-    axiosInstance.post(`BloodBank/search`, SearchDTO).then(
+    setLoggedIn(authCtx.isLoggedIn)
+    axios.post(`${CONSTANTS.API}BloodBank/search`, SearchDTO).then(
       (response) => {
         setData(response.data);
       },
@@ -176,9 +180,9 @@ const UserHome = () => {
               <th className="th" onClick={() => sorting("description")}>
                 Description
               </th>
-              <th className="th">
+              {loggedIn && <th className="th">
                 Update
-              </th>
+              </th>}
             </tr>
           </thead>
           <tbody>
@@ -192,7 +196,7 @@ const UserHome = () => {
                 </td>
                 <td className="td">{bloodBank.rating}</td>
                 <td className="td">{bloodBank.description}</td>
-                <td className="td"><Link to={`/update-bloodbank/${bloodBank.id}`}>Update</Link></td>
+                {loggedIn && <td className="td"><Link to={`/update-bloodbank/${bloodBank.id}`}>Update</Link></td>}
               </tr>
             ))}
           </tbody>
