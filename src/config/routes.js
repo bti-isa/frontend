@@ -1,5 +1,5 @@
 const ROUTES = {
-    HOME_PAGE: `/`,
+    HOME_PAGE: `/home`,
     USER_PAGE: `/user`,
     ADMIN_PAGE: `/admin`,
     SYSADMIN_USERS: `/sysadmin/users`,

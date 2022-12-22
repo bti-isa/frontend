@@ -73,8 +73,7 @@ const RegisterUser = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newUserDto),
       }).then(() => {
-        // navigate("/sysadmin/users");
-        console.log(newUserDto);
+        navigate("/");
       });
     }
   };
@@ -86,8 +85,9 @@ const RegisterUser = () => {
   };
 
   return (
+  <div className="main-container">
     <div className="card">
-      <h1 className="title">Register</h1>
+      <h1 className="title">Registration Form</h1>
       <form>
         <div className="row">
           <div className="row-elem">
@@ -289,10 +289,11 @@ const RegisterUser = () => {
           </div>
         </div>
         <div className="row submit">
-          <button onClick={registerNewUser}>Register</button>
+          <button onClick={registerNewUser}>Submit</button>
         </div>
       </form>
     </div>
+  </div>
   );
 };
 
