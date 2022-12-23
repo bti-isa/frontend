@@ -22,7 +22,11 @@ const CalendarComponent = () => {
   }, [])
 
   const rerender = () => {
-    axiosInstance.get('/Appointment/all')
+    axiosInstance.get('/Appointment/admins-bloodBank', {
+      params: {
+        username:  jwt(JSON.stringify(localStorage.getItem("token"))).sub
+      }
+    })
       .catch((error) => {
         console.error(error)
         return null;
