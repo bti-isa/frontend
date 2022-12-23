@@ -27,6 +27,7 @@ import AuthContext from "store/auth-context";
 import NotFound from "pages/error/NotFound";
 import ShowBloodBank from "pages/show-bloodbank/ShowBloodBank";
 import ScheduleAppointment from "pages/patient/ScheduleAppointment";
+import ShowAppointment from "components/Patient/ShowAppointment";
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -46,6 +47,7 @@ function App() {
             <Route element={<Layout />}>
               <Route path="/admin" element={<Admin />} />
               <Route path="/show-bloodbank/:id" element={<ShowBloodBank />} />
+              <Route path="/show-appointment" element={<ShowAppointment />} />
               <Route path="/sysadmin/users" element={<Users />} />
               <Route path="/sysadmin/new/manager" element={<NewManager />} />
               <Route path="/user" element={<User />} />
