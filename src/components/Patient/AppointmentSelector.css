@@ -42,6 +42,10 @@
     cursor: pointer;
 }
 
+.th {
+    caret-color: transparent;
+}
+
 .myDatePicker fieldset.MuiOutlinedInput-notchedOutline {
     border-color: red;
 }

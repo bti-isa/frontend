@@ -8,7 +8,7 @@ const ScheduleAppointment = () => {
     const [appointmentId, setAppointmentId] = useState(-1);
 
     return (
-        <Container sx={{ display: "flex", maxWidth: "100%", marginLeft: "100px", padding: "0" }}>
+        <Container sx={{ display: "flex", maxWidth: "100% !important", marginLeft: "20px", padding: "0" }}>
             <div className="parent">
                 <div>
                     <AppointmentSelector appointmentId={appointmentId} setAppointmentId={setAppointmentId} />
