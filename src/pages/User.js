@@ -31,6 +31,11 @@ const User = () => {
             Schedule appointment
           </Button>
         </Link>
+        <Link to={"/show-appointment"}>
+          <Button variant="contained" color="primary">
+            Appointment
+          </Button>
+        </Link>
       </Container>
       <UserHome />
     </>
