@@ -160,7 +160,7 @@ const ShowBBDetails = (props) => {
               <td className="td">
                 <Link
                   onClick={() => handleLinkClick(appointment.id)}
-                  //   to={`/user`}
+                  to={`/user`}
                 >
                   Schedule
                 </Link>

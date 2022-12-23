@@ -193,7 +193,6 @@ const NewManager = () => {
 
     return (
         <>
-            <TemporaryNavigation />
             <FormBackground raised>
                 <Form
                     onSubmit={onSubmit}

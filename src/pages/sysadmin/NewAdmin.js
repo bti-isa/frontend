@@ -78,7 +78,6 @@ const NewAdmin = () => {
 
     return (
         <>
-            <TemporaryNavigation />
             <FormBackground raised>
                 <Form
                     onSubmit={onSubmit}
