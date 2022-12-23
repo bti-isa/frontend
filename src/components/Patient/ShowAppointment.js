@@ -25,8 +25,8 @@ const ShowAppointment = () => {
   const handleLinkClick = (id) => {
     axiosInstance.get(`Appointment/cancel/${id}`).then(
       (res) => {
-        navigate("/user");
         toast("Appointment is canceled.");
+        navigate("/user");
       },
       (error) => {
         toast(error.response.data);
