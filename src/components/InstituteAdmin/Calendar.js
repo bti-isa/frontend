@@ -6,12 +6,16 @@ import listPlugin from '@fullcalendar/list';
 import { axiosInstance } from 'config/https';
 import { Container } from '@mui/system';
 import moment from 'moment/moment';
+import { useEffect } from 'react';
 //import { useState } from 'react';
 
 const CalendarComponent = () => {
-  //const [appointments, setAppointments] = useState([])
+    useEffect(() => {
+      rerender()
+    }, [])
 
-  axiosInstance.get('/Appointment/all')
+    const rerender = () => {
+      axiosInstance.get('/Appointment/all')
     .catch((error) => {
       console.error(error)
       return null;
@@ -42,6 +46,7 @@ const CalendarComponent = () => {
       });
       calendar.render();
     })
+    }
 
     const today = () => {
       let today = new Date;
