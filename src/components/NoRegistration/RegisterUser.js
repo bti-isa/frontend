@@ -68,7 +68,7 @@ const RegisterUser = () => {
     };
 
     if (passwordMatch && !errEmail && !errJmbg && !errPhone) {
-      fetch("http://localhost:8080/api/Patient/add", {
+      fetch("http://localhost:8080/api/Patient/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newUserDto),

@@ -30,7 +30,6 @@ const CalendarComponent = () => {
       .then((response) => {
         let temp = []
         response.data.map((appointment) => {
-          console.log(appointment)
           temp.push({
             id: appointment.id,
             resourceId: appointment.id,
@@ -63,7 +62,6 @@ const CalendarComponent = () => {
 
   const test = (date) => {
     let x = moment(date).format("yyyy-MM-ddTHH:mm:ss")
-    console.log(x)
   }
 
   const formatDate = (date) => {

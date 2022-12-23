@@ -33,13 +33,33 @@ export const AuthContextProvider = (props) => {
         
         return false;;
     }
+    const isInstituteAdminHandler = () =>{
+        if(token == null)
+            return null;
+        
+        if(jwt_decode(localStorage.getItem("token")).authorities[0].authority === "INSTITUTE_ADMIN")
+              return true;
+        
+        return false;;
+    }
+    const isSystemAdminHandler = () =>{
+        if(token == null)
+            return null;
+        
+        if(jwt_decode(localStorage.getItem("token")).authorities[0].authority === "SYSTEM_ADMIN")
+              return true;
+        
+        return false;;
+    }
 
     const contextValue = {
         token: token,
         isLoggedIn: userIsLoggedIn,
         login: loginHandler,
         logout: logoutHandler,
-        isPatient: isPatientHandler
+        isPatient: isPatientHandler,
+        isInstituteAdmin: isInstituteAdminHandler,
+        isSystemAdmin: isSystemAdminHandler
     };
 
     return(

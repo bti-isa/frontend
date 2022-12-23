@@ -36,7 +36,6 @@ const Complaints = () => {
 
     return (
         <>
-            <TemporaryNavigation />
             <Toolbar sx={{ justifyContent: 'center', marginBottom: '1rem', minHeight: '1rem !important' }}>
                 <Typography variant="h6" color="initial">
                     These are

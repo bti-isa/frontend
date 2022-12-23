@@ -8,7 +8,7 @@ import Button from "@mui/material/Button";
 const User = () => {
   return (
     <>
-      <Container
+      {/* <Container
         sx={{
           display: "flex",
           width: "100%",
@@ -36,7 +36,7 @@ const User = () => {
             Appointment
           </Button>
         </Link>
-      </Container>
+      </Container> */}
       <UserHome />
     </>
   );

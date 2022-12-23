@@ -4,6 +4,7 @@ import  axios  from 'axios';
 import classes from './LoginForm.module.css';
 import AuthContext from 'store/auth-context';
 import jwt_decode from "jwt-decode";
+import { toast } from 'react-toastify';
 
 const LoginForm = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -22,7 +23,12 @@ const LoginForm = () => {
       .post(url, {
         username: email,
         password: password,
-      }).then((res) => {
+      })
+      .catch((error) => {
+        toast("Password and username don't match 😢")
+        return;
+      })
+      .then((res) => {
         authCtx.login(res.data)
         if(jwt_decode(res.data).authorities[0].authority === "PATIENT")
         {

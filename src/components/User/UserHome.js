@@ -100,11 +100,11 @@ const UserHome = () => {
   }, [searchName, searchCity, searchRating, searchStreet]);
 
   return (
-    <div class="space">
+    <div className="space">
       <h1 className="title">Blood banks</h1>
-      <div class="search">
+      <div className="search">
         <input
-          class="input"
+          className="input"
           type="text"
           name="searchName"
           value={searchName}
@@ -114,7 +114,7 @@ const UserHome = () => {
           }}
         ></input>
         <input
-          class="input"
+          className="input"
           type="text"
           name="searchCity"
           value={searchCity}
@@ -124,7 +124,7 @@ const UserHome = () => {
           }}
         ></input>
         <input
-          class="input"
+          className="input"
           type="text"
           name="searchStreet"
           value={searchStreet}
@@ -134,7 +134,7 @@ const UserHome = () => {
           }}
         ></input>
         <input
-          class="input"
+          className="input"
           type="text"
           name="searchRating"
           value={searchRating}

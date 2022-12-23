@@ -4,7 +4,6 @@ import './AdminTable.css'
 
 export const AdminTable = (props) =>{
     const [data, setData] = useState(props.admins)
-    console.log(props)
     return(
         <div className="container">
         <h1>Admin Accounts</h1>
