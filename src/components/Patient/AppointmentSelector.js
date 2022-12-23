@@ -30,7 +30,6 @@ const AppointmentSelector = ({ appointmentId, setAppointmentId }) => {
             .then(
                 (res) => {
                     setData(res.data);
-                    toast("Available bloodbanks.");
                 },
                 (err) => {
                     toast("No bloodbanks match your criteria.");

@@ -6,57 +6,65 @@ import listPlugin from '@fullcalendar/list';
 import { axiosInstance } from 'config/https';
 import { Container } from '@mui/system';
 import moment from 'moment/moment';
-import { useEffect } from 'react';
-//import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import "./Calendar.css";
+import { TextField } from "@mui/material";
+import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { toast } from "react-toastify";
+import jwt from "jwt-decode";
 
 const CalendarComponent = () => {
-    useEffect(() => {
-      rerender()
-    }, [])
+  const [dateTime, setDateTime] = useState(null);
 
-    const rerender = () => {
-      axiosInstance.get('/Appointment/all')
-    .catch((error) => {
-      console.error(error)
-      return null;
-    })
-    .then((response) => {
-      let temp = []
-      response.data.map((appointment) => {
-        temp.push({
-          id: appointment.id,
-          resourceId: appointment.id,
-          start: formatDate(appointment.dateTime),
-          end: formatDate1(appointment.dateTime, appointment.duration),
-          title: (appointment.patient == null ? 'Available' : appointment.patient.firstName + ' ' + appointment.patient.lastName)
-        })
+  useEffect(() => {
+    rerender()
+  }, [])
+
+  const rerender = () => {
+    axiosInstance.get('/Appointment/all')
+      .catch((error) => {
+        console.error(error)
+        return null;
       })
-      let calendarEl = document.getElementById('calendar');
-      let calendar = new Calendar(calendarEl, {
-        plugins: [dayGridPlugin, listPlugin, timeGridPlugin],
-        now: today(),
-        aspectRatio: 1.8,
-        headerToolbar: {
-          left: 'today prev,next',
-          center: 'title',
-          right: 'timeGridWeek,dayGridMonth,listWeek'
-        },
-        initialView: 'dayGridMonth',
-        events: temp
-      });
-      calendar.render();
-    })
-    }
+      .then((response) => {
+        let temp = []
+        response.data.map((appointment) => {
+          console.log(appointment)
+          temp.push({
+            id: appointment.id,
+            resourceId: appointment.id,
+            start: formatDate(appointment.dateTime),
+            end: formatDate1(appointment.dateTime, appointment.duration),
+            title: (appointment.patient == null ? 'Available' : appointment.patient.firstname + ' ' + appointment.patient.lastname)
+          })
+        })
+        let calendarEl = document.getElementById('calendar');
+        let calendar = new Calendar(calendarEl, {
+          plugins: [dayGridPlugin, listPlugin, timeGridPlugin],
+          now: today(),
+          aspectRatio: 1.8,
+          headerToolbar: {
+            left: 'today prev,next',
+            center: 'title',
+            right: 'timeGridWeek,dayGridMonth,listWeek'
+          },
+          initialView: 'dayGridMonth',
+          events: temp
+        });
+        calendar.render();
+      })
+  }
 
-    const today = () => {
-      let today = new Date;
-      return (today.getFullYear()+"-"+(today.getMonth()+1)+"-"+today.getDate()).toString()
-    }
+  const today = () => {
+    let today = new Date;
+    return (today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate()).toString()
+  }
 
-    const test = (date) => {
-      let x = moment(date).format("yyyy-MM-ddTHH:mm:ss")
-      console.log(x)
-    } 
+  const test = (date) => {
+    let x = moment(date).format("yyyy-MM-ddTHH:mm:ss")
+    console.log(x)
+  }
 
   const formatDate = (date) => {
     let formatted = date.charAt(6) + date.charAt(7) + date.charAt(8) + date.charAt(9)
@@ -75,12 +83,55 @@ const CalendarComponent = () => {
     return x
   }
 
+  const create = () => {
+    if (dateTime == null) {
+      toast("Please enter date and time.");
+      return;
+    }
+    let dto = {
+      dateTime: dateTime,
+      username: jwt(JSON.stringify(localStorage.getItem("token"))).sub,
+    }
+    axiosInstance
+      .post(
+        `http://localhost:8080/api/Appointment/`, dto
+      )
+      .then(
+        (res) => {
+          toast("Appointment is successfullty created.");
+          rerender();
+        }
+      );
+  }
+
   return (
-    <Container sx={{textAlign: 'center'}}>
+    <Container sx={{ textAlign: 'center' }}>
       <Typography variant="h2" color="tertiary">
         Blood bank calendar
       </Typography>
-      <div style={{ width: '90%', margin: '10px auto' }} id="calendar"></div>
+      <div className='wrap-container'>
+        <div style={{ width: '90%', margin: '10px auto' }} id="calendar"></div>
+        <div className='create-appointment-wrapper'>
+          <div className="datePicker">
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DateTimePicker
+                ampm={false}
+                renderInput={(props) => <TextField {...props} />}
+                label="Choose date"
+                value={dateTime}
+                onChange={(newDateTime) => {
+                  setDateTime(newDateTime.$d);
+                }}
+              />
+            </LocalizationProvider>
+          </div>
+          <div className="createButton-wrap">
+            <button className="createButton" onClick={create}>
+              Create appointment
+            </button>
+          </div>
+        </div>
+      </div>
     </Container>
   );
 }
