@@ -29,14 +29,14 @@ const ShowAppointment = () => {
         toast("Appointment is canceled.");
       },
       (error) => {
-        toast(error.data);
+        toast(error.response.data);
         return;
       }
     );
   };
 
   return (
-    <div className="container">
+    <div className="container666">
       <h1>Admin Accounts</h1>
       {data && (
         <table className="table">

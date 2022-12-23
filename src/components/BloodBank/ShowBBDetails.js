@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Radio } from "@mui/material";
 import { toast } from "react-toastify";
 import jwt from "jwt-decode";
+import "./ShowBBDetails.css"
 const ShowBBDetails = (props) => {
   const Questions = [
     { id: 0, text: "Da li imate manje od 50kg?", answer: "" },
@@ -129,7 +130,7 @@ const ShowBBDetails = (props) => {
   };
 
   return (
-    <div className="container">
+    <div className="container666">
       <h1>Available Appointment</h1>
       <table className="table">
         <thead>

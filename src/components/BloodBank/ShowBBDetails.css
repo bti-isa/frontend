@@ -3,14 +3,21 @@
   font-size: 1rem;
 }
 
-.container h1 {
+.container666 h1 {
   font-size: 3rem;
   color: #b30c2e;
   margin-bottom: 4rem;
 }
 
-.container {
+.container666 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: auto;
+  padding-left: 10rem;
+  padding-right: 10rem;
+}
+
+.form .container {
+  width: 100%;
 }
