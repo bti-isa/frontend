@@ -8,6 +8,7 @@ const AppointmentRealizationComponent = (props) =>{
     const [data, setData] = useState(props.appointment);
     const inputDesc = useRef();
     const inputEquipment = useRef();
+    const inputBlood = useRef();
     const navigate = useNavigate();
 
     const handleFinish = () =>{
@@ -15,7 +16,9 @@ const AppointmentRealizationComponent = (props) =>{
             id: data.id,
             patientId: data.patient.id,
             bloodBankId: data.bloodBank.id,
-            reportDescription: inputDesc.current.value
+            reportDescription: inputDesc.current.value,
+            equipment: inputEquipment.current.value,
+            bloodQuantity: inputBlood.current.value
         }
 
         axiosInstance
@@ -31,12 +34,18 @@ const AppointmentRealizationComponent = (props) =>{
             <div className={classes.infore}>
                 <div className={classes["info-item-re"]}>
                     <label>Equipment:</label>
+                    <input type="number" ref={inputEquipment}/>
                 </div>
-                    <textarea ref={inputDesc} name="Text1" cols="60" rows="5"></textarea>
+                 <div className={classes["info-item-re"]}>
+                    <label>Blood Quantity:</label>
+                    <input type="number" ref={inputBlood} />
+                </div>
                 <div className={classes["info-item-re"]}>
                     <label>Report:</label>
                 </div>
-                    <textarea ref={inputEquipment} name="Text1" cols="60" rows="5"></textarea>
+                    <textarea ref={inputDesc} name="Text1" cols="60" rows="5"></textarea>
+            </div>
+            <div className={classes["finish-container"]}>
                 <button className={classes['finish-button']} onClick={handleFinish}>Finish</button>
             </div>
         </div>

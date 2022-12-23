@@ -7,12 +7,12 @@
 }
 
 .left{
-    width: 50%;
+    width: 60%;
     padding: 2rem;
 }
 
 .right{
-    width: 50%;
+    width: 40%;
     padding: 2rem;
     justify-content: right;
 }
