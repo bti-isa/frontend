@@ -29,7 +29,7 @@ const ShowAppointment = () => {
         toast("Appointment is canceled.");
       },
       (error) => {
-        toast(error.data);
+        toast(error.response.data);
         return;
       }
     );
