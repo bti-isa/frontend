@@ -7,8 +7,6 @@ const Users = () => {
   const { data, loading } = useFetchData(`Patient/all`)  //custom hook for fetching any data, just add the part after api/ as param
   return (
     <>
-      <TemporaryNavigation />
-      {/* tertiary operator to show loading while waiting for data from BE */}
       {loading ?
         <Loading />
         :

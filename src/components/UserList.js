@@ -30,7 +30,6 @@ const UserList = ({ users }) => {
     axiosInstance.post(`${CONSTANTS.API}Patient/search`, SearchDTO).then(
       (response) => {
         setData(response.data)
-        console.log(data)
       },
       (error) => {
         alert(error);

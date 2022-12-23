@@ -63,7 +63,7 @@ const ShowAppointment = () => {
                 <td className="td">
                   <Link
                     onClick={() => handleLinkClick(appointment.id)}
-                    //   to={`/user`}
+                    to={`/user`}
                   >
                     Cancel
                   </Link>
