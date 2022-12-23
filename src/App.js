@@ -20,6 +20,10 @@ import WelcomePage from "pages/welcome/Welcome";
 import UpdateAdmin from "components/Admin/UpdateAdmin";
 import UpdateBloodBank from "components/BloodBank/UpdateBloodBank";
 import WithoutNav from "components/Layout/WithoutNav";
+import 'react-toastify/dist/ReactToastify.css';
+import Complaints from "pages/sysadmin/Complaints";
+import CalendarPage from "pages/instituteadmin/CalendarPage";
+import NewAdmin from "pages/sysadmin/NewAdmin";
 import "react-toastify/dist/ReactToastify.css";
 import AuthPage from "pages/auth/AuthPage";
 import { useContext } from "react";
@@ -60,14 +64,17 @@ function App() {
                 path="/schedule-appointment"
                 element={<ScheduleAppointment />}
               />
+              <Route path="/sysadmin/complaints" element={<Complaints />} />
+              <Route path="/admin/calendar" element={<CalendarPage />} />
+              <Route path="/sysadmin/new/admin" element={<NewAdmin />} />
             </Route>
           )}
 
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </Router>
-      <ToastContainer />
-    </ThemeProvider>
+    <ToastContainer />
+    </ThemeProvider >
   );
 }
 
