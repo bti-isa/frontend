@@ -3,7 +3,6 @@ import classes from './AppointmentDetailComponent.module.css'
 
 const AppointmentDetailComponent = (props) =>{
     const [data, setData] = useState(props.appointment)
-    console.log(data)
     return(
         <div className={classes["deail-container"]}>
             <div className={classes.title}>APPOINTMENT</div>

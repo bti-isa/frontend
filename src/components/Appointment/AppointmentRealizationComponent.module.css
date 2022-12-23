@@ -1,0 +1,46 @@
+.deail-container-re {
+    border: 2px solid red;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.titlere {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.infore {
+    width: 100%;
+    margin-left: 2rem;
+}
+
+.finish-button{
+    display: flex;
+    margin-top: 2rem;
+    width: 150px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.infore textarea{
+    width: 80%;
+    resize: none;
+}
+
+.info-item-re {
+    display: flex;
+    padding-top: 1rem;
+    font-size: 1.5rem;
+    justify-content: space-between;
+}
+
+.info-item-re input {
+    border: 0px;
+    border-bottom: 1px solid black;
+    font-weight: 600;
+    font-size: 1rem;
+}
+

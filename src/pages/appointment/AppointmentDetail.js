@@ -10,8 +10,7 @@ import { useParams } from 'react-router';
 
 const AppointmentDetail = () =>{
     const params = useParams();
-    //${params.id}
-    const {data,loading} = useFetchData(`Appointment/1`)
+    const {data,loading} = useFetchData(`Appointment/${params.Id}`)
     return(
         <>
             {loading  ? <Loading /> :  <div className={classes["main-container"]}>
