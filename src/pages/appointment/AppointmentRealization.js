@@ -12,7 +12,6 @@ const AppointmentRealization = () =>{
         <>
             {loading  ? <Loading /> :  <div className={classes["main-container-re"]}>
                 <div className={classes["left-re"]}><AppointmentRealizationComponent appointment={data} /></div>
-                {/* <div className={classes["right-re"]}><AppointmentRealizationOptions /></div> */}
                 </div>
             }
         </>
