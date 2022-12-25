@@ -9,7 +9,7 @@
     margin-top: 1rem;
     text-align: center;
     font-size: 2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 .infore {
@@ -18,12 +18,12 @@
 }
 
 .infore textarea{
-    width: 80%;
+    width: 90%;
     resize: none;
 }
 
 .info-item-re {
-    width: 80%;
+    width: 90%;
     display: flex;
     padding-top: 1rem;
     font-size: 1.5rem;
@@ -36,7 +36,7 @@
 }
 
 .finish-container{
-    width: 80%;
+    width: 90%;
     margin-left: 2rem;
     display: flex;
     justify-content: end;

@@ -30,15 +30,15 @@ const AppointmentRealizationComponent = (props) =>{
 
      return(
         <div className={classes["deail-container-re"]}>
-            <div className={classes.titlere}>APPOINTMENT - {data.id}</div>
+            <div className={classes.titlere}>APPOINTMENT REALIZATION</div>
             <div className={classes.infore}>
                 <div className={classes["info-item-re"]}>
-                    <label>Equipment:</label>
-                    <input type="number" ref={inputEquipment}/>
+                    <label>Used Equipment:</label>
+                    <input type="number" min="0" ref={inputEquipment}/>
                 </div>
                  <div className={classes["info-item-re"]}>
                     <label>Blood Quantity:</label>
-                    <input type="number" ref={inputBlood} />
+                    <input type="number" min="0" ref={inputBlood} />
                 </div>
                 <div className={classes["info-item-re"]}>
                     <label>Report:</label>
