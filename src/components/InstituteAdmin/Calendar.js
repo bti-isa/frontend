@@ -24,7 +24,7 @@ const CalendarComponent = () => {
   const rerender = () => {
     axiosInstance.get('/Appointment/admins-bloodBank', {
       params: {
-        username:  jwt(JSON.stringify(localStorage.getItem("token"))).sub
+        username: jwt(JSON.stringify(localStorage.getItem("token"))).sub
       }
     })
       .catch((error) => {
@@ -102,6 +102,9 @@ const CalendarComponent = () => {
         (res) => {
           toast("Appointment is successfullty created.");
           rerender();
+        },
+        (err) => {
+          toast(err.response.data);
         }
       );
   }
