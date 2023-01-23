@@ -19,7 +19,7 @@ import WelcomePage from "pages/welcome/Welcome";
 import UpdateAdmin from "components/Admin/UpdateAdmin";
 import UpdateBloodBank from "components/BloodBank/UpdateBloodBank";
 import WithoutNav from "components/Layout/WithoutNav";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import Complaints from "pages/sysadmin/Complaints";
 import CalendarPage from "pages/instituteadmin/CalendarPage";
 import NewAdmin from "pages/sysadmin/NewAdmin";
@@ -28,10 +28,13 @@ import AuthPage from "pages/auth/AuthPage";
 import { useContext } from "react";
 import AuthContext from "store/auth-context";
 import NotFound from "pages/error/NotFound";
+import AppointmentDetail from "pages/appointment/AppointmentDetail";
+import AppointmentRealization from "pages/appointment/AppointmentRealization";
 import ShowBloodBank from "pages/show-bloodbank/ShowBloodBank";
 import ScheduleAppointment from "pages/patient/ScheduleAppointment";
 import ShowAppointment from "components/Patient/ShowAppointment";
 import LoyaltyComponent from "pages/sysadmin/UpdateLoyalty";
+import CreateComplaints from "pages/patient/CreateComplaints";
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -61,7 +64,18 @@ function App() {
                 element={<UpdateBloodBank />}
               />
               <Route path="/update-admin/:adminId" element={<UpdateAdmin />} />
-              <Route path="/poll" element={<Poll />} />
+              <Route
+                path="/appointment-detail/:Id"
+                element={<AppointmentDetail />}
+              />
+              <Route
+                path="/appointment-realization/:Id"
+                element={<AppointmentRealization />}
+              />
+              <Route path="/sysadmin/new/admin" element={<NewAdmin />} />
+              <Route path="/complaints" element={<CreateComplaints />} />
+              <Route path="/sysadmin/complaints" element={<Complaints />} />
+              <Route path="/admin/calendar" element={<CalendarPage />} />
               <Route
                 path="/schedule-appointment"
                 element={<ScheduleAppointment />}
@@ -70,14 +84,14 @@ function App() {
               <Route path="/admin/calendar" element={<CalendarPage />} />
               <Route path="/sysadmin/new/admin" element={<NewAdmin />} />
               <Route path="/sysadmin/loyalty" element={< LoyaltyComponent/>} />
+              <Route path="/poll" element={<Poll />} />
             </Route>
           )}
-
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </Router>
-    <ToastContainer />
-    </ThemeProvider >
+      <ToastContainer />
+    </ThemeProvider>
   );
 }
 

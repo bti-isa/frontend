@@ -101,11 +101,10 @@ const PollForm = ({ appointmentId, setAppointmentId }) => {
             }
             axiosInstance
                 .patch(
-                    `http://localhost:8080/api/Appointment/schedule`, dto
+                    `http://localhost:8080/api/Appointment/pre-schedule`, dto
                 )
                 .then(
                     (res) => {
-                        toast("Appointment us successfullty scheduled.");
                         navigate(ROUTES.USER_PAGE);
                     },
                     (error) => {

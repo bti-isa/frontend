@@ -37,7 +37,7 @@ const ShowAppointment = () => {
 
   return (
     <div className="container666">
-      <h1>Admin Accounts</h1>
+      <h1>Scheduled appointments</h1>
       {data && (
         <table className="table">
           <thead>

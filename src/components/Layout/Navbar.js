@@ -15,21 +15,30 @@ const Navbar = () => {
   const [isSystemAdmin, setIsSystemAdmin] = useState(false);
 
   useEffect(() => {
-    setIsPatient(authCtx.isPatient)
-    setIsInstituteAdmin(authCtx.isInstituteAdmin)
-    setIsSystemAdmin(authCtx.isSystemAdmin)
-  }, [])
+    setIsPatient(authCtx.isPatient);
+    setIsInstituteAdmin(authCtx.isInstituteAdmin);
+    setIsSystemAdmin(authCtx.isSystemAdmin);
+  }, []);
 
   const handleLogout = () => {
-    authCtx.logout()
-    navigate('/')
-  }
+    authCtx.logout();
+    navigate("/");
+  };
 
   return (
     <AppBar>
-      <Stack direction='row' sx={{ padding: '0.5rem', justifyContent: 'center' }}>
+      <Stack
+        direction="row"
+        sx={{ padding: "0.5rem", justifyContent: "center" }}
+      >
         {isInstituteAdmin && (
-          <Toolbar sx={{ justifyContent: 'center', margin: '0.5rem 0', minHeight: '1rem !important' }}>
+          <Toolbar
+            sx={{
+              justifyContent: "center",
+              margin: "0.5rem 0",
+              minHeight: "1rem !important",
+            }}
+          >
             <Link to={ROUTES.INSTITUTE_ADMIN_CALENDAR}>
               <Button variant="text" color="secondary">
                 Work Calendar
@@ -40,51 +49,57 @@ const Navbar = () => {
               Logout
             </Button>
           </Toolbar>
-        )
-
-        }
-        {
-          isPatient && (
-            <Toolbar sx={{ justifyContent: 'center', margin: '0.5rem 0', minHeight: '1rem !important' }}>
-              <Link to={ROUTES.USER_PAGE}>
-                <Button variant="text" color="secondary">
-                  Home
-                </Button>
-              </Link>
-              <Divider orientation="vertical" flexItem />
-              <Link to={ROUTES.USER_UPDATE_PATIENT}>
-                <Button variant="text" color="secondary">
-                  Update Patient
-                </Button>
-              </Link>
-              <Divider orientation="vertical" flexItem />
-              <Link to={ROUTES.USER_POLL}>
-                <Button variant="text" color="secondary">
-                  Poll
-                </Button>
-              </Link>
-              <Divider orientation="vertical" flexItem />
-              <Link to={ROUTES.USER_SCHEDULE_APPOINTMENT}>
-                <Button variant="text" color="secondary">
-                  Schedule appointment
-                </Button>
-              </Link>
-              <Divider orientation="vertical" flexItem />
-              <Link to={ROUTES.USER_SHOW_APPOINTMENT}>
-                <Button variant="text" color="secondary">
-                  Appointment
-                </Button>
-              </Link>
-              <Divider orientation="vertical" flexItem />
-              <Button variant="text" color="secondary" onClick={handleLogout}>
-                Logout
+        )}
+        {isPatient && (
+          <Toolbar
+            sx={{
+              justifyContent: "center",
+              margin: "0.5rem 0",
+              minHeight: "1rem !important",
+            }}
+          >
+            <Link to={ROUTES.USER_PAGE}>
+              <Button variant="text" color="secondary">
+                Home
               </Button>
-            </Toolbar>
-          )
-        }
-        {
-          isSystemAdmin && <TemporaryNavigation handleLogout={handleLogout} />
-        }
+            </Link>
+            <Divider orientation="vertical" flexItem />
+            <Link to={ROUTES.USER_UPDATE_PATIENT}>
+              <Button variant="text" color="secondary">
+                Update Patient
+              </Button>
+            </Link>
+            <Divider orientation="vertical" flexItem />
+            <Link to={ROUTES.USER_POLL}>
+              <Button variant="text" color="secondary">
+                Poll
+              </Button>
+            </Link>
+            <Divider orientation="vertical" flexItem />
+            <Link to={ROUTES.USER_SCHEDULE_APPOINTMENT}>
+              <Button variant="text" color="secondary">
+                Schedule appointment
+              </Button>
+            </Link>
+            <Divider orientation="vertical" flexItem />
+            <Link to={ROUTES.USER_SHOW_APPOINTMENT}>
+              <Button variant="text" color="secondary">
+                Appointment
+              </Button>
+            </Link>
+            <Divider orientation="vertical" flexItem />
+            <Link to={ROUTES.COMPLAINTS}>
+              <Button variant="text" color="secondary">
+                Complaint
+              </Button>
+            </Link>
+            <Divider orientation="vertical" flexItem />
+            <Button variant="text" color="secondary" onClick={handleLogout}>
+              Logout
+            </Button>
+          </Toolbar>
+        )}
+        {isSystemAdmin && <TemporaryNavigation handleLogout={handleLogout} />}
       </Stack>
     </AppBar>
   );
