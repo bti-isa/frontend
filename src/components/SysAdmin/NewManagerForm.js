@@ -1,11 +1,9 @@
-import { Grid, MenuItem, Typography, Divider, Button } from '@mui/material';
+import { Grid, MenuItem, Typography, Divider} from '@mui/material';
 import useFetchData from 'customHooks/fetchData';
 import { TextField, Select } from 'mui-rff';
 
 const NewManagerForm = () => {
     const { data, loading } = useFetchData('BloodBank/simple')
-
-    const data1 = [1, 2, 3]
 
     return (
         <>

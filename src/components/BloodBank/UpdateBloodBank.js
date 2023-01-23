@@ -73,7 +73,6 @@ const UpdateBloodBank = () =>{
             returnObject.country = 'This field is required'
         }
 
-        console.log(returnObject)
         return returnObject
     }
 
@@ -95,7 +94,6 @@ const UpdateBloodBank = () =>{
                 latitude: values.latitude
             }
         }
-        console.log(updateBloodBankDTO)
 
         const update = async () => {
             try {

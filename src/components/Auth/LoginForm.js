@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import  axios  from 'axios';
 import classes from './LoginForm.module.css';
 import AuthContext from 'store/auth-context';
+import jwt_decode from "jwt-decode";
+import { toast } from 'react-toastify';
 
 const LoginForm = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -21,9 +23,25 @@ const LoginForm = () => {
       .post(url, {
         username: email,
         password: password,
-      }).then((res) => {
+      })
+      .catch((error) => {
+        toast("Password and username don't match 😢")
+        return;
+      })
+      .then((res) => {
         authCtx.login(res.data)
-        navigate('/user')
+        if(jwt_decode(res.data).authorities[0].authority === "PATIENT")
+        {
+          navigate('/user')
+        }
+        if(jwt_decode(res.data).authorities[0].authority === "SYSTEM_ADMIN")
+        {
+          navigate('/sysadmin/users')
+        }
+        if(jwt_decode(res.data).authorities[0].authority === "INSTITUTE_ADMIN")
+        {
+          navigate('/admin/calendar')
+        }
       });
   }
 

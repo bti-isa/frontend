@@ -100,11 +100,11 @@ const UserHome = () => {
   }, [searchName, searchCity, searchRating, searchStreet]);
 
   return (
-    <div class="space">
+    <div className="space">
       <h1 className="title">Blood banks</h1>
-      <div class="search">
+      <div className="search">
         <input
-          class="input"
+          className="input"
           type="text"
           name="searchName"
           value={searchName}
@@ -114,7 +114,7 @@ const UserHome = () => {
           }}
         ></input>
         <input
-          class="input"
+          className="input"
           type="text"
           name="searchCity"
           value={searchCity}
@@ -124,7 +124,7 @@ const UserHome = () => {
           }}
         ></input>
         <input
-          class="input"
+          className="input"
           type="text"
           name="searchStreet"
           value={searchStreet}
@@ -134,7 +134,7 @@ const UserHome = () => {
           }}
         ></input>
         <input
-          class="input"
+          className="input"
           type="text"
           name="searchRating"
           value={searchRating}
@@ -175,6 +175,7 @@ const UserHome = () => {
               <th className="th" onClick={() => sorting("description")}>
                 Description
               </th>
+              {loggedIn && <th className="th">Show available appointment</th>}
               {loggedIn && !isPatient && <th className="th">Update</th>}
             </tr>
           </thead>
@@ -189,6 +190,11 @@ const UserHome = () => {
                 </td>
                 <td className="td">{bloodBank.rating}</td>
                 <td className="td">{bloodBank.description}</td>
+                {loggedIn && (
+                  <td className="td">
+                    <Link to={`/show-bloodbank/${bloodBank.id}`}>Show</Link>
+                  </td>
+                )}
                 {loggedIn && !isPatient && (
                   <td className="td">
                     <Link to={`/update-bloodbank/${bloodBank.id}`}>Update</Link>

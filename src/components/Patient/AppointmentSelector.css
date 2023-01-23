@@ -1,0 +1,80 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 800px;
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: #b30c2e;
+  font-size: larger;
+  width: 100%;
+  height: 15%;
+}
+
+.chooseContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 15%;
+  padding: 0rem 2rem;
+}
+
+.tableContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 70%;
+}
+
+.table {
+  width: 100%;
+}
+
+.tr:hover {
+  background-color: #e3735e;
+  cursor: pointer;
+}
+
+.th {
+  caret-color: transparent;
+}
+
+.myDatePicker fieldset.MuiOutlinedInput-notchedOutline {
+  border-color: red;
+}
+
+.myDatePicker .Mui-focused fieldset.MuiOutlinedInput-notchedOutline {
+  border-color: red;
+}
+
+.button-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.button {
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: #b30c2e;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  width: 10rem;
+  height: 2.5rem;
+}
+
+.button:hover {
+  background-color: white;
+  color: #b30c2e;
+  border: 1px solid #b30c2e;
+}

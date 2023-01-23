@@ -85,215 +85,220 @@ const RegisterUser = () => {
   };
 
   return (
-  <div className="main-container">
-    <div className="card">
-      <h1 className="title">Registration Form</h1>
-      <form>
-        <div className="row">
-          <div className="row-elem">
-            <div>
-              <label className="label">First Name:</label>
-              <input
-                type="text"
-                required
-                value={firstname}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
-            </div>
-          </div>
-          <div className="row-elem">
-            <div>
-              <label className="label">Last Name:</label>
-              <input
-                type="text"
-                required
-                value={lastname}
-                onChange={(e) => setLastName(e.target.value)}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="row-elem">
-            <div>
-              <label className="label">Username:</label>
-              <input
-                type="email"
-                required
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                onBlur={check}
-              />
-              {errEmail && <p className="red">Email already exists.</p>}
-            </div>
-          </div>
-          <div className="row-elem">
-            <div>
-              <label className="label">
-                Phone number:<span className="span">(least 9 characters)</span>
-              </label>
-              <input
-                type="text"
-                required
-                value={phoneNumber}
-                onChange={(e) => setPhone(e.target.value)}
-                onBlur={check}
-              />
-              {errPhone && <p className="red">Phone number already exists.</p>}
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="row-elem">
-            <div>
-              <label className="label">
-                Password:<span className="span">(least 8 characters)</span>
-              </label>
-              <input
-                type="password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-          </div>
-          <div className="row-elem">
-            <div>
-              <label className="label">Repeat password:</label>
-              <input
-                type="password"
-                value={repeatPassword}
-                required
-                onChange={(e) => {
-                  checkPasswordMatch(e);
-                }}
-              />
-              {!passwordMatch && <p className="red">Password doesn't match.</p>}
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="row-elem">
-            <div>
-              <label className="label">
-                JMBG:<span className="span">(least 13 characters)</span>
-              </label>
-              <input
-                type="text"
-                required
-                value={jmbg}
-                onChange={(e) => setJmbg(e.target.value)}
-                onBlur={check}
-              />
-              {errJmbg && <p className="red">Jmbg already exists.</p>}
-            </div>
-          </div>
-          <div className="row-elem">
-            <div>
-              <label className="label">Gender:</label>
-              <select
-                onChange={(e) => setGender(e.target.value)}
-                className="select"
-                defaultValue=" "
-              >
-                <option disabled value=" ">
-                  &#160;
-                </option>
-                <option value="MALE">Male</option>
-                <option value="FEMALE">Female</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="row-elem">
-            <div className="row-elem__wrap">
-              <div className="row-elem__street">
-                <label className="label">Street:</label>
+    <div className="main-container">
+      <div className="card">
+        <h1 className="title">Registration Form</h1>
+        <form>
+          <div className="row">
+            <div className="row-elem">
+              <div>
+                <label className="label">First Name:</label>
                 <input
                   type="text"
                   required
-                  value={street}
-                  onChange={(e) => setStreet(e.target.value)}
+                  value={firstname}
+                  onChange={(e) => setFirstName(e.target.value)}
                 />
               </div>
-              <div className="row-elem__number">
-                <label className="label">Number:</label>
+            </div>
+            <div className="row-elem">
+              <div>
+                <label className="label">Last Name:</label>
                 <input
                   type="text"
                   required
-                  value={number}
-                  onChange={(e) => setNumber(e.target.value)}
+                  value={lastname}
+                  onChange={(e) => setLastName(e.target.value)}
                 />
               </div>
             </div>
           </div>
-          <div className="row-elem">
-            <div>
-              <label className="label">City:</label>
-              <input
-                type="text"
-                required
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-              />
+          <div className="row">
+            <div className="row-elem">
+              <div>
+                <label className="label">Username:</label>
+                <input
+                  type="email"
+                  required
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  onBlur={check}
+                />
+                {errEmail && <p className="red">Email already exists.</p>}
+              </div>
+            </div>
+            <div className="row-elem">
+              <div>
+                <label className="label">
+                  Phone number:
+                  <span className="span">(least 9 characters)</span>
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={phoneNumber}
+                  onChange={(e) => setPhone(e.target.value)}
+                  onBlur={check}
+                />
+                {errPhone && (
+                  <p className="red">Phone number already exists.</p>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="row">
-          <div className="row-elem">
-            <div>
-              <label className="label">Country:</label>
-              <input
-                type="text"
-                required
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
-              />
+          <div className="row">
+            <div className="row-elem">
+              <div>
+                <label className="label">
+                  Password:<span className="span">(least 8 characters)</span>
+                </label>
+                <input
+                  type="password"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="row-elem">
+              <div>
+                <label className="label">Repeat password:</label>
+                <input
+                  type="password"
+                  value={repeatPassword}
+                  required
+                  onChange={(e) => {
+                    checkPasswordMatch(e);
+                  }}
+                />
+                {!passwordMatch && (
+                  <p className="red">Password doesn't match.</p>
+                )}
+              </div>
             </div>
           </div>
-          <div className="row-elem">
-            <div>
-              <label className="label">Postal number:</label>
-              <input
-                type="text"
-                required
-                value={postalCode}
-                onChange={(e) => setPostal(Number(e.target.value))}
-              />
+          <div className="row">
+            <div className="row-elem">
+              <div>
+                <label className="label">
+                  JMBG:<span className="span">(least 13 characters)</span>
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={jmbg}
+                  onChange={(e) => setJmbg(e.target.value)}
+                  onBlur={check}
+                />
+                {errJmbg && <p className="red">Jmbg already exists.</p>}
+              </div>
+            </div>
+            <div className="row-elem">
+              <div>
+                <label className="label">Gender:</label>
+                <select
+                  onChange={(e) => setGender(e.target.value)}
+                  className="select"
+                  defaultValue=" "
+                >
+                  <option disabled value=" ">
+                    &#160;
+                  </option>
+                  <option value="MALE">Male</option>
+                  <option value="FEMALE">Female</option>
+                </select>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="row">
-          <div className="row-elem">
-            <div>
-              <label className="label">Occupation:</label>
-              <input
-                type="text"
-                required
-                value={occupation}
-                onChange={(e) => setOccupation(e.target.value)}
-              />
+          <div className="row">
+            <div className="row-elem">
+              <div className="row-elem__wrap">
+                <div className="row-elem__street">
+                  <label className="label">Street:</label>
+                  <input
+                    type="text"
+                    required
+                    value={street}
+                    onChange={(e) => setStreet(e.target.value)}
+                  />
+                </div>
+                <div className="row-elem__number">
+                  <label className="label">Number:</label>
+                  <input
+                    type="text"
+                    required
+                    value={number}
+                    onChange={(e) => setNumber(e.target.value)}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="row-elem">
+              <div>
+                <label className="label">City:</label>
+                <input
+                  type="text"
+                  required
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                />
+              </div>
             </div>
           </div>
-          <div className="row-elem">
-            <div>
-              <label className="label">Education:</label>
-              <input
-                type="text"
-                required
-                value={education}
-                onChange={(e) => setEducation(e.target.value)}
-              />
+          <div className="row">
+            <div className="row-elem">
+              <div>
+                <label className="label">Country:</label>
+                <input
+                  type="text"
+                  required
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="row-elem">
+              <div>
+                <label className="label">Postal number:</label>
+                <input
+                  type="text"
+                  required
+                  value={postalCode}
+                  onChange={(e) => setPostal(Number(e.target.value))}
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="row submit">
-          <button onClick={registerNewUser}>Submit</button>
-        </div>
-      </form>
+          <div className="row">
+            <div className="row-elem">
+              <div>
+                <label className="label">Occupation:</label>
+                <input
+                  type="text"
+                  required
+                  value={occupation}
+                  onChange={(e) => setOccupation(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="row-elem">
+              <div>
+                <label className="label">Education:</label>
+                <input
+                  type="text"
+                  required
+                  value={education}
+                  onChange={(e) => setEducation(e.target.value)}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="row submit">
+            <button onClick={registerNewUser}>Submit</button>
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
   );
 };
 
