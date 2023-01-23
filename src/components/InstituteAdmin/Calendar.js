@@ -45,7 +45,6 @@ const CalendarComponent = () => {
         let calendarEl = document.getElementById('calendar');
         let calendar = new Calendar(calendarEl, {
           plugins: [dayGridPlugin, listPlugin, timeGridPlugin],
-          now: today(),
           aspectRatio: 1.8,
           headerToolbar: {
             left: 'today prev,next',
@@ -57,11 +56,6 @@ const CalendarComponent = () => {
         });
         calendar.render();
       })
-  }
-
-  const today = () => {
-    let today = new Date;
-    return (today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate()).toString()
   }
 
   const test = (date) => {

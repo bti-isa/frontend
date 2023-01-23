@@ -1,4 +1,5 @@
 import right from '../../images/right.png'
+import right1 from '../../images/right1.png'
 import { Link } from 'react-scroll'
 import './Welcome.css'
 import UserHome from 'components/User/UserHome'
@@ -26,7 +27,7 @@ const WelcomePage = () =>{
                         </div>
                     </div>
                     <div className='right'>
-                        <img src={right} alt="NE RADI SLIKA JBG"/>
+                        <img src={right1} alt="NE RADI SLIKA JBG"/>
                     </div>
                 </div>
             </section>

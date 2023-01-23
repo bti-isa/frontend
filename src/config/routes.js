@@ -11,7 +11,8 @@ const ROUTES = {
     USER_POLL: `/poll`,
     USER_SCHEDULE_APPOINTMENT: `/schedule-appointment`,
     USER_UPDATE_PATIENT: `/update-patient`,
-    INSTITUTE_ADMIN_CALENDAR: `/admin/calendar`
+    INSTITUTE_ADMIN_CALENDAR: `/admin/calendar`,
+    SYSADMIN_LOYALTY: `/sysadmin/loyalty`
 }
 
 export default ROUTES
