@@ -87,7 +87,7 @@ const ShowBBDetails = (props) => {
     else {
       setErr(false);
       axiosInstance
-        .patch(`Appointment/schedule`, {
+        .patch(`Appointment/pre-schedule`, {
           username: jwt(JSON.stringify(localStorage.getItem("token"))).sub,
           appointmentId: appointmentId,
           poll: {
