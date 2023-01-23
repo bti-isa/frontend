@@ -20,7 +20,7 @@ import WelcomePage from "pages/welcome/Welcome";
 import UpdateAdmin from "components/Admin/UpdateAdmin";
 import UpdateBloodBank from "components/BloodBank/UpdateBloodBank";
 import WithoutNav from "components/Layout/WithoutNav";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import Complaints from "pages/sysadmin/Complaints";
 import CalendarPage from "pages/instituteadmin/CalendarPage";
 import NewAdmin from "pages/sysadmin/NewAdmin";
@@ -32,6 +32,7 @@ import NotFound from "pages/error/NotFound";
 import ShowBloodBank from "pages/show-bloodbank/ShowBloodBank";
 import ScheduleAppointment from "pages/patient/ScheduleAppointment";
 import ShowAppointment from "components/Patient/ShowAppointment";
+import CreateComplaints from "pages/patient/CreateComplaints";
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -69,14 +70,15 @@ function App() {
               <Route path="/sysadmin/complaints" element={<Complaints />} />
               <Route path="/admin/calendar" element={<CalendarPage />} />
               <Route path="/sysadmin/new/admin" element={<NewAdmin />} />
+              <Route path="/complaints" element={<CreateComplaints />} />
             </Route>
           )}
 
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </Router>
-    <ToastContainer />
-    </ThemeProvider >
+      <ToastContainer />
+    </ThemeProvider>
   );
 }
 
