@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Radio } from "@mui/material";
 import { toast } from "react-toastify";
 import jwt from "jwt-decode";
-import "./ShowBBDetails.css"
+import "./ShowBBDetails.css";
 const ShowBBDetails = (props) => {
   const Questions = [
     { id: 0, text: "Da li imate manje od 50kg?", answer: "" },
@@ -48,6 +48,7 @@ const ShowBBDetails = (props) => {
   const [order, setOrder] = useState("ASC");
   const [showPoll, setPoll] = useState(false);
   const navigate = useNavigate();
+
   const handleLinkClick = (id) => {
     setPoll(true);
     setAppointmentId(id);
@@ -158,10 +159,7 @@ const ShowBBDetails = (props) => {
               </td>
               <td className="td">AVAILABLE</td>
               <td className="td">
-                <Link
-                  onClick={() => handleLinkClick(appointment.id)}
-                  to={`/user`}
-                >
+                <Link onClick={() => handleLinkClick(appointment.id)}>
                   Schedule
                 </Link>
               </td>
