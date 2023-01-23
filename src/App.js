@@ -29,6 +29,8 @@ import AuthPage from "pages/auth/AuthPage";
 import { useContext } from "react";
 import AuthContext from "store/auth-context";
 import NotFound from "pages/error/NotFound";
+import AppointmentDetail from "pages/appointment/AppointmentDetail";
+import AppointmentRealization from "pages/appointment/AppointmentRealization";
 import ShowBloodBank from "pages/show-bloodbank/ShowBloodBank";
 import ScheduleAppointment from "pages/patient/ScheduleAppointment";
 import ShowAppointment from "components/Patient/ShowAppointment";
@@ -62,18 +64,25 @@ function App() {
                 element={<UpdateBloodBank />}
               />
               <Route path="/update-admin/:adminId" element={<UpdateAdmin />} />
-              <Route path="/poll" element={<Poll />} />
+              <Route
+                path="/appointment-detail/:Id"
+                element={<AppointmentDetail />}
+              />
+              <Route
+                path="/appointment-realization/:Id"
+                element={<AppointmentRealization />}
+              />
+              <Route path="/sysadmin/new/admin" element={<NewAdmin />} />
+              <Route path="/complaints" element={<CreateComplaints />} />
+              <Route path="/sysadmin/complaints" element={<Complaints />} />
+              <Route path="/admin/calendar" element={<CalendarPage />} />
               <Route
                 path="/schedule-appointment"
                 element={<ScheduleAppointment />}
               />
-              <Route path="/sysadmin/complaints" element={<Complaints />} />
-              <Route path="/admin/calendar" element={<CalendarPage />} />
-              <Route path="/sysadmin/new/admin" element={<NewAdmin />} />
-              <Route path="/complaints" element={<CreateComplaints />} />
+              <Route path="/poll" element={<Poll />} />
             </Route>
           )}
-
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </Router>
