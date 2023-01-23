@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate,
 } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
 import { ToastContainer } from "react-toastify";
@@ -34,6 +33,7 @@ import AppointmentRealization from "pages/appointment/AppointmentRealization";
 import ShowBloodBank from "pages/show-bloodbank/ShowBloodBank";
 import ScheduleAppointment from "pages/patient/ScheduleAppointment";
 import ShowAppointment from "components/Patient/ShowAppointment";
+import LoyaltyComponent from "pages/sysadmin/UpdateLoyalty";
 import CreateComplaints from "pages/patient/CreateComplaints";
 
 function App() {
@@ -80,6 +80,10 @@ function App() {
                 path="/schedule-appointment"
                 element={<ScheduleAppointment />}
               />
+              <Route path="/sysadmin/complaints" element={<Complaints />} />
+              <Route path="/admin/calendar" element={<CalendarPage />} />
+              <Route path="/sysadmin/new/admin" element={<NewAdmin />} />
+              <Route path="/sysadmin/loyalty" element={< LoyaltyComponent/>} />
               <Route path="/poll" element={<Poll />} />
             </Route>
           )}

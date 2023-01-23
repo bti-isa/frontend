@@ -9,3 +9,7 @@ main {
 .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
   border-color: white !important;
 }
+
+html {
+  background-image: url('../public/background.webp');
+}

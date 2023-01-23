@@ -30,6 +30,12 @@ const TemporaryNavigation = ({handleLogout}) => {
                     </Button>
                 </Link>
                 <Divider orientation="vertical" flexItem />
+                <Link to={ROUTES.SYSADMIN_LOYALTY}>
+                    <Button variant="text" color="secondary">
+                        Loyalty Program
+                    </Button>
+                </Link>
+                <Divider orientation="vertical" flexItem />
                     <Button variant="text" color="secondary" onClick={handleLogout}>
                         Logout
                     </Button>
