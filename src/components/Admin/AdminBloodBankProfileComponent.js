@@ -1,8 +1,24 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import icon from "../../images/icon-hospital.png";
+import iconShadow from "leaflet/dist/images/marker-shadow.png";
+import L from "leaflet";
 import "./AdminBloodBankProfileComponent.css";
+import style from "./../Map/Map.module.css";
+
+let DefaultIconHospital = L.icon({
+  iconUrl: icon,
+  shadowUrl: iconShadow,
+});
 
 const AdminBloodBankProfileComponent = (props) => {
   const [data, setData] = useState(props.data);
+  const [position, setPosition] = useState([
+    45.25490514025021, 19.827061869242982,
+  ]);
+  const [longitude, setLongitude] = useState([]);
+  const [latitude, setLatitude] = useState([]);
 
   const handleAddress = (address) => {
     return (
@@ -49,16 +65,25 @@ const AdminBloodBankProfileComponent = (props) => {
           </div>
         </div>
         <div className="bank-data-right">
-          <div className="bank-data-item map">
-            <label className="bank-data-label map">You can find us at</label>
-            <input
-              className="bank-data-input"
-              value={handleAddress(data.address)}
-              disabled
-              type="text"
-            />
+          <div className="map-container" id="map">
+            <MapContainer
+              className={style.leaf}
+              center={position}
+              zoom={18}
+              scrollWheelZoom={true}
+            >
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright%22%3EOpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              <Marker
+                icon={DefaultIconHospital}
+                position={[45.25490514025021, 19.827061869242982]}
+              >
+                <Popup>{handleAddress(data.address)}</Popup>
+              </Marker>
+            </MapContainer>
           </div>
-          <div className="map-container"></div>
         </div>
       </div>
     </div>
