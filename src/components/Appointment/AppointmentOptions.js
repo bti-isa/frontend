@@ -17,7 +17,7 @@ const AppointmetOptions = (props) => {
       .put(`${CONSTANTS.API}Patient/punish/${patientId}`)
       .then((res) => {
         toast("User has been punished!");
-        navigate("/user");
+        navigate("/admin/calendar");
       });
   };
 

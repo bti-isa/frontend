@@ -1,0 +1,63 @@
+.admin-container{
+    display: flex;
+    flex-direction: column;
+    height: 45vh;
+}
+
+.admin-title{
+ display: flex;
+ font-size: 3rem;
+ margin-left: 2rem;
+ margin-bottom: 1rem;
+ margin-top: 1.5rem;
+ height: 30%;
+}
+
+.data{
+    display: flex;
+    height: 70%;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 2rem;
+    font-size: 1.5rem;
+}
+
+.data-left{
+    width: 50%;
+}
+
+.data-right{
+    width: 50%;
+}
+
+.data-item{
+    display: flex;
+    margin-top: 1rem;
+}
+
+.data-label{
+    width: 30%;
+}
+
+.data-input{
+    border: 0;
+    border-bottom: 1px solid red;
+    width: 55%;
+    font-size: 1.1rem;
+    font-weight: 10;
+}
+
+.admin-update-container{
+    display: flex;
+    width: 90%;
+    margin-left: 2rem;
+    justify-content: end;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+}
+
+.admin-update-button{
+    width: 150px;
+    height: 30px;
+    font-size: 1.5rem;
+}

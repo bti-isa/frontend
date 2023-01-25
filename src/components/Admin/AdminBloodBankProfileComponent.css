@@ -1,0 +1,55 @@
+.bank-container{
+    display: flex;
+    height: 500px;
+    flex-direction: column;
+}
+
+.bank-title{
+    display: flex;
+    font-size: 3rem;
+    margin-left: 2rem;
+    margin-top: 1.5rem;
+    height: 20%;
+}
+
+.bank-data{
+    display: flex;
+    height: 70%;
+    justify-content: space-between;
+    width: 90%;
+    margin-left: 2rem;
+    font-size: 1.5rem;
+}
+
+.bank-data-left{
+    width: 45%;
+}
+
+.bank-data-right{
+    width: 70%;
+    padding-left: 2rem;
+}
+
+.bank-data-item{
+    display: flex;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.bank-data-label{
+    width: 30%;
+}
+
+.bank-data-input{
+    display: flex;
+    justify-content: end;
+    border: 0;
+    border-bottom: 1px solid red;
+    margin-left: 2rem;
+    font-size: 1.1rem;
+    font-weight: 10;
+}
+
+.map-container{
+    margin-top: 2rem;
+}

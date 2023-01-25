@@ -1,0 +1,15 @@
+.container{
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    margin-top: 7rem;
+}
+
+.title{
+    font-size: 4rem;
+    margin-bottom: 4rem;
+}
+
+.table{
+    font-size: 1.5rem;
+}
