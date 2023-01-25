@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Poll from "components/Poll/Poll";
 import { axiosInstance } from "config/https";
@@ -6,7 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { Radio } from "@mui/material";
 import { toast } from "react-toastify";
 import jwt from "jwt-decode";
+import { useParams } from "react-router-dom";
 import "./ShowBBDetails.css";
+
 const ShowBBDetails = (props) => {
   const Questions = [
     { id: 0, text: "Da li imate manje od 50kg?", answer: "" },
@@ -34,6 +36,19 @@ const ShowBBDetails = (props) => {
       answer: "",
     },
   ];
+  const params = useParams();
+  useEffect(() => {
+    axiosInstance
+      .get(
+        `http://localhost:8080/api/Appointment/finished-appointment/${params.id}`
+      )
+      .then((res) => {
+        setIsLoading(false);
+        setFinished(res.data);
+        console.log(res.data);
+      });
+  }, []);
+
   const [weightOver50kg, setWeightOver50kg] = useState("");
   const [commonCold, setCommonCold] = useState("");
   const [skinDiseases, setSkinDiseases] = useState("");
@@ -45,6 +60,8 @@ const ShowBBDetails = (props) => {
   const [err, setErr] = useState(false);
   const [appointmentId, setAppointmentId] = useState("");
   const [data, setData] = useState(props.appointments);
+  const [finished, setFinished] = useState();
+  const [isLoading, setIsLoading] = useState(true);
   const [order, setOrder] = useState("ASC");
   const [showPoll, setPoll] = useState(false);
   const navigate = useNavigate();
@@ -361,6 +378,48 @@ const ShowBBDetails = (props) => {
           </div>
         )}
       </>
+      <div>
+        <h1>History</h1>
+        <table className="table">
+          <thead>
+            <tr className="tr">
+              <th className="th">Patient</th>
+              <th className="th" onClick={() => sorting("dateTime")}>
+                Date
+              </th>
+              <th className="th" onClick={() => sorting("dateTime")}>
+                Time
+              </th>
+              <th className="th">Status</th>
+              <th className="th">Duration</th>
+              <th className="th">BloodBank</th>
+            </tr>
+          </thead>
+          <tbody>
+            {!isLoading && (
+              <>
+                {finished.map((appointment) => (
+                  <tr className="tr" key={appointment.bloodBank.id}>
+                    <td className="td">
+                      {appointment.patient.firstname}{" "}
+                      {appointment.patient.lastname}
+                    </td>
+                    <td className="td">
+                      {appointment.dateTime.toString().split(" ")[0]}
+                    </td>
+                    <td className="td">
+                      {appointment.dateTime.toString().split(" ")[1]}
+                    </td>
+                    <td className="td">COMPLITED</td>
+                    <td className="td">{appointment.duration}min</td>
+                    <td className="td">{appointment.bloodBank.name}</td>
+                  </tr>
+                ))}
+              </>
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
