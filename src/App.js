@@ -1,9 +1,5 @@
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
 import { ToastContainer } from "react-toastify";
 import Layout from "components/Layout/Layout";
@@ -35,6 +31,7 @@ import ScheduleAppointment from "pages/patient/ScheduleAppointment";
 import ShowAppointment from "components/Patient/ShowAppointment";
 import LoyaltyComponent from "pages/sysadmin/UpdateLoyalty";
 import CreateComplaints from "pages/patient/CreateComplaints";
+import ShowMap from "pages/map/ShowMap";
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -83,8 +80,9 @@ function App() {
               <Route path="/sysadmin/complaints" element={<Complaints />} />
               <Route path="/admin/calendar" element={<CalendarPage />} />
               <Route path="/sysadmin/new/admin" element={<NewAdmin />} />
-              <Route path="/sysadmin/loyalty" element={< LoyaltyComponent/>} />
+              <Route path="/sysadmin/loyalty" element={<LoyaltyComponent />} />
               <Route path="/poll" element={<Poll />} />
+              <Route path="/map" element={<ShowMap />} />
             </Route>
           )}
           <Route path="*" element={<NotFound />}></Route>
