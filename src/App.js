@@ -34,6 +34,7 @@ import CreateComplaints from "pages/patient/CreateComplaints";
 import DonorsPage from "pages/instituteadmin/DonorsPage";
 import AdminProfileComponent from "components/Admin/AdminProfileComponent";
 import AdminProfilePage from "pages/instituteadmin/AdminProfilePage";
+import ShowMap from "pages/map/ShowMap";
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -86,6 +87,7 @@ function App() {
               <Route path="/poll" element={<Poll />} />
               <Route path="/donors" element={<DonorsPage />} />
               <Route path="/admin-profile" element={<AdminProfilePage />} />
+              <Route path="/map" element={<ShowMap />} />
             </Route>
           )}
           <Route path="*" element={<NotFound />}></Route>

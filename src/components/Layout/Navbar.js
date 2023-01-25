@@ -88,6 +88,11 @@ const Navbar = () => {
                 Poll
               </Button>
             </Link>
+            <Link to={ROUTES.MAP}>
+              <Button variant="text" color="secondary">
+                Map
+              </Button>
+            </Link>
             <Divider orientation="vertical" flexItem />
             <Link to={ROUTES.USER_SCHEDULE_APPOINTMENT}>
               <Button variant="text" color="secondary">

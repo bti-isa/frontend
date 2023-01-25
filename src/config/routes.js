@@ -16,6 +16,7 @@ const ROUTES = {
   COMPLAINTS: `/complaints`,
   INSTITUTE_ADMIN_PROFILE: `/admin-profile`,
   BLOOD_BANK_DONORS: `/donors`,
+  MAP: `/map`,
 };
 
 export default ROUTES;
