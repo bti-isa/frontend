@@ -1,0 +1,21 @@
+.card {
+  margin: 5rem;
+  margin-top: 7rem;
+  background-color: #f2f2f2;
+  border-radius: 20px;
+  box-shadow: 2px 3px darkgrey;
+  height: 80vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.map {
+  width: 70%;
+  height: 100%;
+}
+.leaf {
+  height: 95%;
+  width: 100%;
+  margin: 1rem;
+  border-radius: 20px;
+}
