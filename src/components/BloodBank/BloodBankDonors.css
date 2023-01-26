@@ -13,3 +13,11 @@
 .table{
     font-size: 1.5rem;
 }
+
+.th{
+    cursor: pointer;
+}
+
+.td{
+    cursor: default;
+}
