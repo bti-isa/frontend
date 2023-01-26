@@ -7,8 +7,10 @@ import "leaflet/dist/leaflet.css";
 import iconAmbulance from "../../images/icons8-ambulance-48.png";
 import icon from "../../images/icon-hospital.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
+import iconMarker from "leaflet/dist/images/marker-icon.png";
 import L from "leaflet";
 import { toast } from "react-toastify";
+import SearchBox from "./SearchBox";
 
 let DefaultIconHospital = L.icon({
   iconUrl: icon,
@@ -16,6 +18,10 @@ let DefaultIconHospital = L.icon({
 });
 let DefaultIconAmbulance = L.icon({
   iconUrl: iconAmbulance,
+  shadowUrl: iconShadow,
+});
+let DefaultIconMarker = L.icon({
+  iconUrl: iconMarker,
   shadowUrl: iconShadow,
 });
 
@@ -26,11 +32,15 @@ const Map = () => {
   const [position, setPosition] = useState([45.244809, 19.831056]);
   const [longitude, setLongitude] = useState([]);
   const [latitude, setLatitude] = useState([]);
+  const [selectPosition, setSelectPosition] = useState(null);
 
-  const renderMarker = () => {
+  const renderCar = () => {
     return <Marker position={position}></Marker>;
   };
 
+  const renderMarker = () => {
+    return <Marker icon={DefaultIconMarker} position={selectPosition}></Marker>;
+  };
   let onConnected = () => {
     console.log("Connected!!");
   };
@@ -44,7 +54,7 @@ const Map = () => {
     axiosInstance
       .post(`http://localhost:8080/map/start/`, {
         startLocation: [19.831056, 45.244809],
-        endLocation: [longitude, latitude],
+        endLocation: [selectPosition.lon, selectPosition.lat],
         frequency: 1,
       })
       .then(
@@ -73,7 +83,8 @@ const Map = () => {
             icon={DefaultIconHospital}
             position={[45.244809, 19.831056]}
           ></Marker>
-          {renderMarker()}
+          {renderCar()}
+          {selectPosition && renderMarker()}
         </MapContainer>
       </div>
       <div>
@@ -88,31 +99,17 @@ const Map = () => {
       </div>
       <div className={style.form}>
         <div className={style.formTitle}>Start delivery</div>
-        <div className={style.fields}>
-          <div className={style.field}>
-            <input
-              type="number"
-              className={style.input}
-              placeholder="Latitude"
-              onChange={(e) => setLatitude(e.target.value)}
-              step="0.000001"
-            />
+        <SearchBox
+          selectPosition={selectPosition}
+          setSelectPosition={setSelectPosition}
+        />
+        {selectPosition && (
+          <div className={style.buttonWrap}>
+            <button className={style.button} onClick={start}>
+              Start
+            </button>
           </div>
-          <div className={style.field}>
-            <input
-              type="number"
-              className={style.input}
-              placeholder="Longitude"
-              onChange={(e) => setLongitude(e.target.value)}
-              step="0.000001"
-            />
-          </div>
-        </div>
-        <div className={style.buttonWrap}>
-          <button className={style.button} onClick={start}>
-            Start
-          </button>
-        </div>
+        )}
       </div>
     </div>
   );
