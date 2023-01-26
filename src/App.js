@@ -1,9 +1,5 @@
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
 import { ToastContainer } from "react-toastify";
 import Layout from "components/Layout/Layout";
@@ -36,6 +32,12 @@ import ShowAppointment from "components/Patient/ShowAppointment";
 import LoyaltyComponent from "pages/sysadmin/UpdateLoyalty";
 import CreateComplaints from "pages/patient/CreateComplaints";
 import Test from "pages/sysadmin/Test";
+import DonorsPage from "pages/instituteadmin/DonorsPage";
+import AdminProfileComponent from "components/Admin/AdminProfileComponent";
+import AdminProfilePage from "pages/instituteadmin/AdminProfilePage";
+import ShowMap from "pages/map/ShowMap";
+import BloodBankProfilePage from "pages/instituteadmin/BloodBankProfilePage";
+import ProfilePage from "pages/patient/ProfilePage";
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -87,6 +89,14 @@ function App() {
               <Route path="/sysadmin/loyalty" element={< LoyaltyComponent/>} />
               <Route path="/test" element={<Test />} />
               <Route path="/poll" element={<Poll />} />
+              <Route path="/donors" element={<DonorsPage />} />
+              <Route path="/admin-profile" element={<AdminProfilePage />} />
+              <Route
+                path="/blood-bank-profile"
+                element={<BloodBankProfilePage />}
+              />
+              <Route path="/map" element={<ShowMap />} />
+              <Route path="/profile" element={<ProfilePage />} />
             </Route>
           )}
           <Route path="*" element={<NotFound />}></Route>
