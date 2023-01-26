@@ -71,3 +71,7 @@
 .editable{
     border: 1px solid black;
 }
+
+.password-item{
+    margin-top: 4rem;
+}

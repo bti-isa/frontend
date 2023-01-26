@@ -60,6 +60,7 @@ const CalendarComponent = () => {
             right: "timeGridWeek,dayGridMonth,listWeek",
           },
           eventClick: function (info) {
+            console.log(info.event);
             navigate(`/appointment-detail/${info.event.id}`);
           },
           initialView: "dayGridMonth",

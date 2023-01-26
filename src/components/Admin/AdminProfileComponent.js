@@ -7,8 +7,11 @@ import classes from "./AdminProfileComponent.css";
 const AdminProfileComponent = (props) => {
   const [data, setData] = useState(props.data);
   const [disabled, setDisabled] = useState(true);
+  const [disabledPass, setDisabledPass] = useState(true);
   const [showEditButton, setShowEditButton] = useState(true);
-  console.log(data);
+  const [isPassword, setIsPassword] = useState(false);
+  const [newPassword, setNewPassword] = useState();
+  const [confirmPassword, setConfirmPassowrd] = useState();
   const [userInput, setUserInput] = useState({
     id: props.data.id,
     enteredFirstName: props.data.firstname,
@@ -20,16 +23,6 @@ const AdminProfileComponent = (props) => {
     enteredPostalCode: props.data.address.postalCode,
   });
   const navigate = useNavigate();
-
-  const handleUpdate = () => {
-    setShowEditButton(false);
-    setDisabled(false);
-  };
-
-  const handleCancel = () => {
-    setShowEditButton(true);
-    setDisabled(true);
-  };
 
   const firstNameChangeHandler = (event) => {
     setUserInput({
@@ -80,21 +73,58 @@ const AdminProfileComponent = (props) => {
     });
   };
 
+  const newConfirmPasswordHandler = (event) => {
+    setConfirmPassowrd(event.target.value);
+  };
+
+  const newPasswordHandler = (event) => {
+    setNewPassword(event.target.value);
+  };
+
+  const handleUpdate = () => {
+    setShowEditButton(false);
+    setDisabled(false);
+  };
+
+  const handleCancel = () => {
+    setShowEditButton(true);
+    setDisabled(true);
+    setIsPassword(false);
+  };
+
+  const handleChangePassword = () => {
+    setShowEditButton(false);
+    setIsPassword(true);
+    setDisabledPass(false);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    axiosInstance
-      .put(`http://localhost:8080/api/Admin/profile-update`, userInput)
-      .then((response) => {
-        setDisabled(true);
-        setShowEditButton(true);
-        if (response) {
-          toast("You have successfully updated your account info");
-          navigate("/admin-profile");
-          return;
-        }
+    if (isPassword) {
+      axiosInstance
+        .put(`http://localhost:8080/api/User/password/change`, {
+          email: data.username,
+          password: newPassword,
+          confirmPassword: confirmPassword,
+        })
+        .then((response) => {
+          toast("You have successffully changed your password");
+        });
+    } else {
+      axiosInstance
+        .put(`http://localhost:8080/api/Admin/profile-update`, userInput)
+        .then((response) => {
+          setDisabled(true);
+          setShowEditButton(true);
+          if (response) {
+            toast("You have successfully updated your account info");
+            navigate("/admin-profile");
+            return;
+          }
 
-        toast("Something went wrong, please try again");
-      });
+          toast("Something went wrong, please try again");
+        });
+    }
   };
 
   return (
@@ -149,6 +179,32 @@ const AdminProfileComponent = (props) => {
               type="text"
             />
           </div>
+          {isPassword && (
+            <>
+              <div className="data-item password-item">
+                <label className="data-label">New Password:</label>
+                <input
+                  className={
+                    disabledPass ? "data-input" : "data-input editable"
+                  }
+                  disabled={disabledPass}
+                  onChange={newPasswordHandler}
+                  type="password"
+                />
+              </div>
+              <div className="data-item">
+                <label className="data-label">Confirm Password:</label>
+                <input
+                  className={
+                    disabledPass ? "data-input" : "data-input editable"
+                  }
+                  disabled={disabledPass}
+                  onChange={newConfirmPasswordHandler}
+                  type="password"
+                />
+              </div>
+            </>
+          )}
         </div>
         <div className="data-right">
           <div className="data-item">
@@ -207,7 +263,7 @@ const AdminProfileComponent = (props) => {
         {showEditButton && (
           <>
             <button
-              onClick={handleUpdate}
+              onClick={handleChangePassword}
               className="admin-update-button password-change"
             >
               Change Password

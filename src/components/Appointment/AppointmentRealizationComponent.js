@@ -24,7 +24,7 @@ const AppointmentRealizationComponent = (props) => {
       .patch(`${CONSTANTS.API}Appointment/finish`, dto)
       .then((res) => {
         toast("Appointment has been finished!");
-        navigate("/user");
+        navigate("/admin/calendar");
       });
   };
 

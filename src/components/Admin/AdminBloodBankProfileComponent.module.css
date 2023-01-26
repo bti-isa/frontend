@@ -65,6 +65,7 @@
 
 .blood-units-container{
    width: 50%;
+   overflow-y: auto;
 }
 
 .options-container{
