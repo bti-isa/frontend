@@ -25,6 +25,9 @@ const AppointmentRealizationComponent = (props) => {
       .then((res) => {
         toast("Appointment has been finished!");
         navigate("/admin/calendar");
+      })
+      .catch((error) => {
+        toast(error.response.data);
       });
   };
 
