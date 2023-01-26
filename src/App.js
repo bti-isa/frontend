@@ -35,6 +35,7 @@ import DonorsPage from "pages/instituteadmin/DonorsPage";
 import AdminProfileComponent from "components/Admin/AdminProfileComponent";
 import AdminProfilePage from "pages/instituteadmin/AdminProfilePage";
 import ShowMap from "pages/map/ShowMap";
+import BloodBankProfilePage from "pages/instituteadmin/BloodBankProfilePage";
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -87,6 +88,10 @@ function App() {
               <Route path="/poll" element={<Poll />} />
               <Route path="/donors" element={<DonorsPage />} />
               <Route path="/admin-profile" element={<AdminProfilePage />} />
+              <Route
+                path="/blood-bank-profile"
+                element={<BloodBankProfilePage />}
+              />
               <Route path="/map" element={<ShowMap />} />
             </Route>
           )}

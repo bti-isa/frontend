@@ -57,6 +57,11 @@ const Navbar = () => {
                 Donors
               </Button>
             </Link>
+            <Link to={`${ROUTES.INSTITUTE_BLOOD_BANK_PROFILE}`}>
+              <Button variant="text" color="secondary">
+                Blood Bank
+              </Button>
+            </Link>
             <Divider orientation="vertical" flexItem />
             <Button variant="text" color="secondary" onClick={handleLogout}>
               Logout
