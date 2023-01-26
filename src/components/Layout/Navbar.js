@@ -52,6 +52,11 @@ const Navbar = () => {
                 Profile
               </Button>
             </Link>
+            <Link to={ROUTES.MAP}>
+              <Button variant="text" color="secondary">
+                Map
+              </Button>
+            </Link>
             <Link to={`${ROUTES.BLOOD_BANK_DONORS}`}>
               <Button variant="text" color="secondary">
                 Donors
@@ -93,11 +98,6 @@ const Navbar = () => {
                 Poll
               </Button>
             </Link>
-            <Link to={ROUTES.MAP}>
-              <Button variant="text" color="secondary">
-                Map
-              </Button>
-            </Link>
             <Divider orientation="vertical" flexItem />
             <Link to={ROUTES.USER_SCHEDULE_APPOINTMENT}>
               <Button variant="text" color="secondary">
@@ -114,6 +114,12 @@ const Navbar = () => {
             <Link to={ROUTES.COMPLAINTS}>
               <Button variant="text" color="secondary">
                 Complaint
+              </Button>
+            </Link>
+            <Divider orientation="vertical" flexItem />
+            <Link to={ROUTES.PROFILE}>
+              <Button variant="text" color="secondary">
+                Profile
               </Button>
             </Link>
             <Divider orientation="vertical" flexItem />
