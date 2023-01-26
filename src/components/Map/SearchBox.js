@@ -73,12 +73,12 @@ export default function SearchBox(props) {
           </Button>
         </div>
       </div>
-      <div>
-        {isRender && (
+      {isRender && (
+        <div style={{ height: "30vh" }}>
           <List
             component="nav"
             aria-label="main mailbox folders"
-            style={{ overflowY: "auto", height: "40%" }}
+            style={{ overflowY: "auto", height: "100%" }}
           >
             {listPlace.map((item) => {
               return (
@@ -104,8 +104,8 @@ export default function SearchBox(props) {
               );
             })}
           </List>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
