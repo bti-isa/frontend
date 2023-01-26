@@ -1,0 +1,34 @@
+.table-container{
+    width: 90%;
+    height: 100%;
+    display: block;
+}
+
+.table{
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    align-items: left;
+    cursor: default;
+}
+
+.table-head{
+    background-color: #b30c2e;
+	color: #ffffff;
+	font-weight: bold;
+	border: 1px solid #54585d;
+    
+}
+
+.table-body{
+    color: #636363;
+}
+
+.tr{
+    border: 1px solid #54585d;
+    font-size: 1.5rem;
+}
+
+.th{
+   font-size: 2rem;
+}

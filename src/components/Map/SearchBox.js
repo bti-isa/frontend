@@ -7,6 +7,8 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 import { height } from "@mui/system";
+import loupe from "../../images/loupe.png";
+import searchMarker from "../../images/map-marker-icon.png";
 
 const NOMINATIM_BASE_URL = "https://nominatim.openstreetmap.org/search?";
 const params = {
@@ -65,11 +67,7 @@ export default function SearchBox(props) {
                 .catch((err) => console.log("err: ", err));
             }}
           >
-            <img
-              src="https://assets.stickpng.com/images/59cfc4d2d3b1936210a5ddc7.png"
-              alt="Loupe"
-              style={{ width: 42, height: 42 }}
-            />
+            <img src={loupe} alt="Loupe" style={{ width: 42, height: 42 }} />
           </Button>
         </div>
       </div>
@@ -92,7 +90,7 @@ export default function SearchBox(props) {
                   >
                     <ListItemIcon>
                       <img
-                        src="https://www.worth.com/wp-content/uploads/2017/09/map-marker-icon.png"
+                        src={searchMarker}
                         alt="Marker"
                         style={{ width: 42, height: 42 }}
                       />
