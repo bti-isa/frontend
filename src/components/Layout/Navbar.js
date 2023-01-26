@@ -117,6 +117,12 @@ const Navbar = () => {
               </Button>
             </Link>
             <Divider orientation="vertical" flexItem />
+            <Link to={ROUTES.PROFILE}>
+              <Button variant="text" color="secondary">
+                Profile
+              </Button>
+            </Link>
+            <Divider orientation="vertical" flexItem />
             <Button variant="text" color="secondary" onClick={handleLogout}>
               Logout
             </Button>
