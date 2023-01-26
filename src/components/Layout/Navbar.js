@@ -2,6 +2,7 @@ import { AppBar, Divider, Stack, Toolbar } from "@mui/material";
 import Button from "@mui/material/Button";
 import TemporaryNavigation from "components/SysAdmin/TemporaryNavigation";
 import ROUTES from "config/routes";
+import jwtDecode from "jwt-decode";
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "store/auth-context";
@@ -13,11 +14,13 @@ const Navbar = () => {
   const [isPatient, setIsPatient] = useState(false);
   const [isInstituteAdmin, setIsInstituteAdmin] = useState(false);
   const [isSystemAdmin, setIsSystemAdmin] = useState(false);
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     setIsPatient(authCtx.isPatient);
     setIsInstituteAdmin(authCtx.isInstituteAdmin);
     setIsSystemAdmin(authCtx.isSystemAdmin);
+    setEmail(jwtDecode(authCtx.token).sub);
   }, []);
 
   const handleLogout = () => {
@@ -42,6 +45,21 @@ const Navbar = () => {
             <Link to={ROUTES.INSTITUTE_ADMIN_CALENDAR}>
               <Button variant="text" color="secondary">
                 Work Calendar
+              </Button>
+            </Link>
+            <Link to={`${ROUTES.INSTITUTE_ADMIN_PROFILE}`}>
+              <Button variant="text" color="secondary">
+                Profile
+              </Button>
+            </Link>
+            <Link to={`${ROUTES.BLOOD_BANK_DONORS}`}>
+              <Button variant="text" color="secondary">
+                Donors
+              </Button>
+            </Link>
+            <Link to={`${ROUTES.INSTITUTE_BLOOD_BANK_PROFILE}`}>
+              <Button variant="text" color="secondary">
+                Blood Bank
               </Button>
             </Link>
             <Divider orientation="vertical" flexItem />

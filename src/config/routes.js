@@ -14,6 +14,9 @@ const ROUTES = {
   INSTITUTE_ADMIN_CALENDAR: `/admin/calendar`,
   SYSADMIN_LOYALTY: `/sysadmin/loyalty`,
   COMPLAINTS: `/complaints`,
+  INSTITUTE_ADMIN_PROFILE: `/admin-profile`,
+  INSTITUTE_BLOOD_BANK_PROFILE: `/blood-bank-profile`,
+  BLOOD_BANK_DONORS: `/donors`,
   MAP: `/map`,
 };
 

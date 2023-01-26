@@ -1,0 +1,97 @@
+.profile-bank-container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.bank-name{
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    font-size: 3rem;
+    align-items: center;
+    justify-content: center;
+    height: 5%;
+    color: #b30c2e;
+}
+
+.map-container{
+    display: flex;
+    width: 95%;
+    height: 50%;
+    margin-left: 2rem;
+}
+
+.details-container{
+    display: flex;
+    height: 10%;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.bank-description-container{
+    width: 50%;
+    box-sizing: border-box;
+    border-bottom: 1px solid #b30c2e;
+}
+
+.bank-rating-container{
+    width: 40%;
+    display: flex;
+    justify-content: end;
+    border-bottom: 1px solid #b30c2e;
+}
+
+.bank-rating-container-inner{
+    width: 80%;
+}
+
+.details-label{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.bank-description,.bank-rating{
+    font-size: 1.5rem;
+}
+
+.tables-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    height: 30%;
+}
+
+.blood-units-container{
+   width: 50%;
+}
+
+.options-container{
+    display: flex;
+    justify-content: end;
+    width: 40%;
+}
+
+.options-container-inner{
+    width: 80%;
+    border: 5px solid #b30c2e;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-around;
+}
+
+.options-button-container{
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.options-button{
+    font-size: 1.3rem;
+    height: 40px;
+    width: 250px;
+}
