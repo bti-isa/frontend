@@ -25,6 +25,10 @@ const AppointmentRealizationComponent = (props) => {
       .then((res) => {
         toast("Appointment has been finished!");
         navigate("/user");
+      })
+      .catch((error) => {
+        toast(error.response.data);
+        // console.log(error);
       });
   };
 
