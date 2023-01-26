@@ -25,6 +25,7 @@ const AppointmetOptions = (props) => {
     axiosInstance
       .get(`${CONSTANTS.API}polls/get/${data.patient.id}`)
       .then((res) => {
+        console.log(res.data);
         if (res.data) {
           toast.success("You can start appointment");
           setShowButton(true);

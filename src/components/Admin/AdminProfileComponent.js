@@ -50,8 +50,6 @@ const AdminProfileComponent = (props) => {
               type="text"
             />
           </div>
-        </div>
-        <div className="data-right">
           <div className="data-item">
             <label className="data-label">Gender:</label>
             <input
@@ -61,6 +59,8 @@ const AdminProfileComponent = (props) => {
               type="text"
             />
           </div>
+        </div>
+        <div className="data-right">
           <div className="data-item">
             <label className="data-label">Phone Number:</label>
             <input
@@ -71,20 +71,38 @@ const AdminProfileComponent = (props) => {
             />
           </div>
           <div className="data-item">
-            <label className="data-label">Address:</label>
-            <input
-              className="data-input"
-              disabled
-              value={data.address.street + " " + data.address.number}
-              type="text"
-            />
-          </div>
-          <div className="data-item">
             <label className="data-label">City:</label>
             <input
               className="data-input"
               disabled
               value={data.address.city}
+              type="text"
+            />
+          </div>
+          <div className="data-item">
+            <label className="data-label">Address:</label>
+            <input
+              className="data-input"
+              disabled
+              value={data.address.street}
+              type="text"
+            />
+          </div>
+          <div className="data-item">
+            <label className="data-label">Number:</label>
+            <input
+              className="data-input"
+              disabled
+              value={data.address.number}
+              type="text"
+            />
+          </div>
+          <div className="data-item">
+            <label className="data-label">Postal Code:</label>
+            <input
+              className="data-input"
+              disabled
+              value={data.address.postalCode}
               type="text"
             />
           </div>
