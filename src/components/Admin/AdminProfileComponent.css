@@ -8,7 +8,6 @@
  display: flex;
  font-size: 3rem;
  margin-left: 2rem;
- margin-bottom: 1rem;
  margin-top: 1.5rem;
  height: 30%;
 }
@@ -45,6 +44,7 @@
     width: 55%;
     font-size: 1.1rem;
     font-weight: 10;
+    background-color: white;
 }
 
 .admin-update-container{
@@ -61,4 +61,13 @@
     height: 30px;
     font-size: 1.5rem;
     margin-top: 2rem;
+    margin-left: 1rem;
+}
+
+.password-change{
+    width: 250px;
+}
+
+.editable{
+    border: 1px solid black;
 }
