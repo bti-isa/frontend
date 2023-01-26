@@ -1,8 +1,8 @@
-import right from '../../images/right.png'
 import right1 from '../../images/right1.png'
 import { Link } from 'react-scroll'
 import './Welcome.css'
 import UserHome from 'components/User/UserHome'
+import CacheableImage from 'components/CacheableImage'
 
 const WelcomePage = () =>{
     return(
@@ -27,7 +27,8 @@ const WelcomePage = () =>{
                         </div>
                     </div>
                     <div className='right'>
-                        <img src={right1} alt="NE RADI SLIKA JBG"/>
+                        <CacheableImage src={right1}></CacheableImage>
+                        {/* <img src={right1} alt="NE RADI SLIKA JBG"/> */}
                     </div>
                 </div>
             </section>

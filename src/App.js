@@ -35,6 +35,7 @@ import ScheduleAppointment from "pages/patient/ScheduleAppointment";
 import ShowAppointment from "components/Patient/ShowAppointment";
 import LoyaltyComponent from "pages/sysadmin/UpdateLoyalty";
 import CreateComplaints from "pages/patient/CreateComplaints";
+import Test from "pages/sysadmin/Test";
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -84,6 +85,7 @@ function App() {
               <Route path="/admin/calendar" element={<CalendarPage />} />
               <Route path="/sysadmin/new/admin" element={<NewAdmin />} />
               <Route path="/sysadmin/loyalty" element={< LoyaltyComponent/>} />
+              <Route path="/test" element={<Test />} />
               <Route path="/poll" element={<Poll />} />
             </Route>
           )}
